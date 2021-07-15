@@ -134,4 +134,14 @@ print("무게 : \(weight)")
 print("가방 : \(bag)")
 print("색상 : \(color)")
 
+// 문자열 수정
+var variableString = "Horse"
+variableString += " and carriage"
+print(variableString)
+
+// 변수 데이터 자체를 변경시키길 원한다면 += 보다 append 사용할 것!
+var string1 = "hello"
+var string2 = " there"
+string1.append(string2)
+print(string1)
 
