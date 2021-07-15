@@ -145,3 +145,77 @@ var string2 = " there"
 string1.append(string2)
 print(string1)
 
+// 문자 길이
+let str = "1,234,567,890"
+print(str.count)
+
+// if문
+if str.count == 0{
+    print("Data가 없습니다.")
+}else{
+    print("Data의 길이는 \(str.count)입니다.")
+}
+
+// Any, nil
+/*
+ Any : Swift에서 모든 타입을 지칭하는 키워드 (권장 x)
+       Any 타입 작성 시 반드시 Any라고 적어줘야 함!
+       Any 타입은 Any 타입끼리만 사칙 연산이 가능함!
+ nil : null, Null, None
+ */
+var someAny: Any = 100
+print(type(of: someAny))
+someAny = "Type"
+print(type(of: someAny))
+someAny = 132.33
+print(type(of: someAny))
+
+var someDouble1: Double = 11.1
+print(someAny as! Double + someDouble1)
+
+/*
+ Optional Value (Null Safety)
+ -> ?를 적지 않는다면 nil 값 사용 불가능
+    ?는 정의할 떼 !는 optional을 풀 때 사용!
+ */
+var someNil: String?
+someNil = nil
+
+// Tuple
+// Tuple 사용 전
+var dialCode = 82
+var isoCode = "KR"
+var countryName = "Korea"
+
+print(dialCode, isoCode, countryName)
+
+// Tuple 사용 후
+var country = (82, "KR", "Korea")
+print(type(of: country))
+print(country)
+print(country.0, country.1, country.2)
+
+var country1 = (dialCode1 : 82, isoCode1 : "KR", countryName1 : "Korea")
+print(type(of: country1))
+print(country1)
+print(country1.dialCode1, country1.isoCode1, country1.countryName1)
+
+// 나만의 Type만들기 (Type 별칭)
+typealias myInt = Int
+let age2: myInt = 20
+print(type(of: age2))
+
+// 여러 개 Type이 있는 나만의 Type 만들기 (Tuple 사용)
+typealias person = (name: String, height: Int, marriage: Bool)
+var p1: person = ("hyehh", 158, false)
+print(p1)
+print(type(of: p1))
+
+// Tuple을 사용하여 직사각형의 넓이와 둘레를 출력
+typealias Rectangle = (name: String, width: Int, height: Int, area: Int, boarder: Int)
+var r1: Rectangle = ("직사각형", 5, 6, 0, 0)
+r1.area = r1.width * r1.height
+r1.boarder = r1.width + r1.height
+print(r1)
+
+
