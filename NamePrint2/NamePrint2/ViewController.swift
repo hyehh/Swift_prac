@@ -30,7 +30,8 @@ class ViewController: UIViewController {
             lblResult.text = "Input your name!"
         }else{
             lblText.text = "Welcome!"
-            lblText.text?.append(" " + tfName.text!)
+            // lblText.text?.append(" " + tfName.text!)
+            lblText.text = "Welcome! \(tfName.text!)"
             self.view.endEditing(true)
             lblResult.text = "Send OK!"
         }

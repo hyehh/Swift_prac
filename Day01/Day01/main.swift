@@ -218,4 +218,25 @@ r1.area = r1.width * r1.height
 r1.boarder = r1.width + r1.height
 print(r1)
 
+// 연산자
+let (x1, y1, z1) = (1, "Kim", 3)
+print(x1 + z1)
 
+// 사칙 연산자 (데이터 타입에 따라 결과 타입이 달라짐)
+print(10 / 3)
+print(10.0 / 3.0)
+print(10.0 / 3)
+print(10 % 3) // 정수 % 정수 만 나머지 값 존재!
+
+// 단항 음수 연산자
+let one = 1
+let minusOne = -one
+print(minusOne)
+
+// 옵셔널 출력
+var str2: String?
+str2 = "name"
+print(type(of: str2))
+print(str2)
+print(type(of: str2!))
+print(str2!)
