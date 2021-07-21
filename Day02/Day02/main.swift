@@ -77,4 +77,10 @@ for i in 0..<names.count{
     print("Person \(i+1) is called \(names[i])")
 }
 
-
+// Optional
+var constantNum: Int? = 100
+constantNum = 22
+print(constantNum!)
+var constantNum2: Int! = 100
+constantNum2 = 20
+print(constantNum2 + 20)
