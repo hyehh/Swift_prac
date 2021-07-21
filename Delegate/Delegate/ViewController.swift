@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     }
     
     func btnClick() {
-        let InputText = tfInput.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        lblResult.text = InputText
+        let inputText = tfInput.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        lblResult.text = inputText
         self.view.endEditing(true)
     }
     
@@ -37,7 +37,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        btnClick()
+        let inputText = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        textField.text = inputText
+        self.view.endEditing(true)
+        
+        // btnClick()
         return true
     }
 }
