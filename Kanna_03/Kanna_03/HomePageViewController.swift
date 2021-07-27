@@ -6,16 +6,33 @@
 //
 
 import UIKit
+import WebKit
 
 class HomePageViewController: UIViewController {
 
+    @IBOutlet weak var myWeb: WKWebView!
+    @IBOutlet weak var myIndicator: UIActivityIndicatorView!
+    
+    var siteUrl = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        webSetting(siteUrl)
+        myWeb.navigationDelegate = self
     }
     
-
+    func receivedData(_ receivedData: String) {
+        siteUrl = receivedData
+    }
+    
+    func webSetting(_ url: String) {
+        let myUrl = URL(string: url)
+        let myRequest = URLRequest(url: myUrl!)
+        myWeb.load(myRequest)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -26,4 +43,22 @@ class HomePageViewController: UIViewController {
     }
     */
 
+}
+
+extension HomePageViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        myIndicator.startAnimating()
+        myIndicator.isHidden = false
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        myIndicator.stopAnimating()
+        myIndicator.isHidden = true
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        myIndicator.stopAnimating()
+        myIndicator.isHidden = true
+    }
 }

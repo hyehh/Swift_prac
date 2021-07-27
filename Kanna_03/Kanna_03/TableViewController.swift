@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import Kanna
 
 class TableViewController: UITableViewController {
 
     @IBOutlet var tvListView: UITableView!
+    
+    var rtList = [String]()
+    var hpList = [String]()
+    var listCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,29 +24,52 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        dataCrawling()
+        listCount = rtList.count
+    }
+    
+    func dataCrawling() {
+        let mainUrl = "https://www.rottentomatoes.com/top/bestofrt/?year=2019"
+        guard let main = URL(string: mainUrl) else {
+            print("Error : \(mainUrl) doesn't seem to be a valid URL")
+            return }
+        
+        do {
+            let htmlData = try String(contentsOf: main, encoding: .utf8)
+            let doc = try HTML(html: htmlData, encoding: .utf8)
+            
+            // //*[@id="top_movies_main"]/div/table/tr/td/a
+            for title in doc.xpath("//*[@id='top_movies_main']/div/table/tr/td/a"){
+                rtList.append(title.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+                hpList.append(title["href"]!)
+            }
+        } catch let error {
+            print("Error : \(error)")
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return listCount
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
         // Configure the cell...
+        cell.textLabel?.text = "\(indexPath.row+1) : \(rtList[indexPath.row])"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -78,14 +106,21 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "sgDetail" {
+            let cell = sender as! UITableViewCell
+            let indexPath = self.tvListView.indexPath(for: cell)
+            let homePageViewController = segue.destination as! HomePageViewController
+            homePageViewController.receivedData("https://www.rottentomatoes.com/\(hpList[indexPath!.row])")
+        }
+
     }
-    */
+    
 
 }
