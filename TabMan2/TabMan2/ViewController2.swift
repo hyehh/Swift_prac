@@ -1,13 +1,13 @@
 //
-//  FirstViewController.swift
-//  TabMan
+//  ViewController2.swift
+//  TabMan2
 //
 //  Created by 박성훈 on 2021/07/29.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ViewController2: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
