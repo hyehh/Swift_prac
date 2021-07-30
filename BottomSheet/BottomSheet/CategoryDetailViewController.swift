@@ -1,33 +1,27 @@
 //
-//  MyMenuViewController.swift
+//  CategoryDetailViewController.swift
 //  BottomSheet
 //
 //  Created by Hyeji on 2021/07/30.
 //
 
 import UIKit
-var list = ["1", "2", "3", "4", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
 
+class CategoryDetailViewController: UIViewController {
 
-class MyMenuViewController: UIViewController {
-
-    
-    @IBOutlet weak var tvMyMenu: UITableView!
+    @IBOutlet weak var tvCategoryDetail: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-        tvMyMenu.dataSource = self
-        tvMyMenu.delegate = self
-        self.tvMyMenu.separatorStyle = .none
-
+        
+        tvCategoryDetail.dataSource = self
+        tvCategoryDetail.delegate = self
+        self.tvCategoryDetail.separatorStyle = .none
     }
     
 
-    
-    
     /*
     // MARK: - Navigation
 
@@ -40,10 +34,10 @@ class MyMenuViewController: UIViewController {
 
 }
 
-extension MyMenuViewController: UITableViewDataSource {
+extension CategoryDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myMenuCell") as! MyMenuTableViewCell
-        // cell.lblText.text = "\(indexPath.row)번째 데이터입니다"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryDetailCell") as! CategoryDetailTableViewCell
+        cell.lblCategoryDetail.text = "\(indexPath.row)번째 데이터입니다"
         return cell
     }
     
@@ -54,8 +48,8 @@ extension MyMenuViewController: UITableViewDataSource {
 
 }
  
-extension MyMenuViewController: UITableViewDelegate {
+extension CategoryDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 50
     }
 }

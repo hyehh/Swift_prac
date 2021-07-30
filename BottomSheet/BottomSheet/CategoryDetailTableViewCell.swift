@@ -1,5 +1,5 @@
 //
-//  MyMenuTableViewCell.swift
+//  CategoryDetailTableViewCell.swift
 //  BottomSheet
 //
 //  Created by Hyeji on 2021/07/30.
@@ -7,7 +7,10 @@
 
 import UIKit
 
-class MyMenuTableViewCell: UITableViewCell {
+class CategoryDetailTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var ivCategoryDetail: UIImageView!
+    @IBOutlet weak var lblCategoryDetail: UILabel!
     
     // 선택 시 및 미선택 시 색상 모두 화이트 설정
     override func setSelected(_ selected: Bool, animated: Bool) {

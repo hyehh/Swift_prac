@@ -9,13 +9,20 @@ import UIKit
 
 class AllMenuViewController: UIViewController {
 
+    
+    @IBOutlet weak var tvAllMenu: UITableView!
+    @IBOutlet weak var lblStore: UILabel!
+    
     var categoryList = [("NEW", "NEW"), ("추천", "Recommend"), ("콜드 브루", "Cold Brew"), ("에스프레소", "Espresso"), ("프라푸치노", "Frappuccino"), ("블렌디드", "Blended"), ("피지오", "Starbucks Fizzio"), ("티바나", "Teavana"), ("브루드 커피", "Brewed Coffee"), ("기타", "Others"), ("병음료", "RTD")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        tvAllMenu.dataSource = self
+        tvAllMenu.delegate = self
+        self.tvAllMenu.separatorStyle = .none
+        
     }
     
 
@@ -35,6 +42,7 @@ extension AllMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allMenuCell") as! AllMenuTableViewCell
         cell.ivAllMenu.image = UIImage(named: "lamp_red.png")
+        cell.lblAllMenu.text = categoryList[indexPath.row].0
         return cell
     }
     
@@ -47,6 +55,6 @@ extension AllMenuViewController: UITableViewDataSource {
  
 extension AllMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 120
     }
 }
