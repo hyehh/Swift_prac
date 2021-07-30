@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36792422E1B79645B5A68F35 /* Pods_OrderRnD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D23F1C91F245F5C757FDA9 /* Pods_OrderRnD.framework */; };
 		857F1C2426B26EDF0028D3BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F1C2326B26EDF0028D3BC /* AppDelegate.swift */; };
 		857F1C2626B26EDF0028D3BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F1C2526B26EDF0028D3BC /* SceneDelegate.swift */; };
 		857F1C2B26B26EDF0028D3BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857F1C2926B26EDF0028D3BC /* Main.storyboard */; };
@@ -14,11 +15,11 @@
 		857F1C3026B26EE20028D3BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857F1C2E26B26EE20028D3BC /* LaunchScreen.storyboard */; };
 		857F1C3826B270B00028D3BC /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F1C3726B270B00028D3BC /* OrderTableViewController.swift */; };
 		857F1C3E26B276210028D3BC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F1C3D26B276210028D3BC /* TabBarController.swift */; };
-		857F1C6026B285490028D3BC /* OrderTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F1C5F26B285490028D3BC /* OrderTitleTableViewCell.swift */; };
 		857F1C6226B285600028D3BC /* OrderCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857F1C6126B285600028D3BC /* OrderCategoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78FF520D7BF913C0E85241FC /* Pods-OrderRnD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrderRnD.release.xcconfig"; path = "Target Support Files/Pods-OrderRnD/Pods-OrderRnD.release.xcconfig"; sourceTree = "<group>"; };
 		857F1C2026B26EDF0028D3BC /* OrderRnD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderRnD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857F1C2326B26EDF0028D3BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		857F1C2526B26EDF0028D3BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,8 +29,9 @@
 		857F1C3126B26EE20028D3BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		857F1C3726B270B00028D3BC /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		857F1C3D26B276210028D3BC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		857F1C5F26B285490028D3BC /* OrderTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTitleTableViewCell.swift; sourceTree = "<group>"; };
 		857F1C6126B285600028D3BC /* OrderCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		85D23F1C91F245F5C757FDA9 /* Pods_OrderRnD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrderRnD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B66C2537B246191C1CB059 /* Pods-OrderRnD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrderRnD.debug.xcconfig"; path = "Target Support Files/Pods-OrderRnD/Pods-OrderRnD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36792422E1B79645B5A68F35 /* Pods_OrderRnD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +51,8 @@
 			children = (
 				857F1C2226B26EDF0028D3BC /* OrderRnD */,
 				857F1C2126B26EDF0028D3BC /* Products */,
+				A611EADDB0D63B527BED0C83 /* Pods */,
+				E24DFD81AEF496E429FD6E13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,10 +75,26 @@
 				857F1C3126B26EE20028D3BC /* Info.plist */,
 				857F1C3726B270B00028D3BC /* OrderTableViewController.swift */,
 				857F1C3D26B276210028D3BC /* TabBarController.swift */,
-				857F1C5F26B285490028D3BC /* OrderTitleTableViewCell.swift */,
 				857F1C6126B285600028D3BC /* OrderCategoryTableViewCell.swift */,
 			);
 			path = OrderRnD;
+			sourceTree = "<group>";
+		};
+		A611EADDB0D63B527BED0C83 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93B66C2537B246191C1CB059 /* Pods-OrderRnD.debug.xcconfig */,
+				78FF520D7BF913C0E85241FC /* Pods-OrderRnD.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E24DFD81AEF496E429FD6E13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85D23F1C91F245F5C757FDA9 /* Pods_OrderRnD.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 857F1C3426B26EE20028D3BC /* Build configuration list for PBXNativeTarget "OrderRnD" */;
 			buildPhases = (
+				726176801AF8E8CA38FCC1B0 /* [CP] Check Pods Manifest.lock */,
 				857F1C1C26B26EDF0028D3BC /* Sources */,
 				857F1C1D26B26EDF0028D3BC /* Frameworks */,
 				857F1C1E26B26EDF0028D3BC /* Resources */,
+				D2F62540623EFC6A1E99F8DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +164,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		726176801AF8E8CA38FCC1B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrderRnD-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2F62540623EFC6A1E99F8DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OrderRnD/Pods-OrderRnD-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OrderRnD/Pods-OrderRnD-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OrderRnD/Pods-OrderRnD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		857F1C1C26B26EDF0028D3BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -149,7 +214,6 @@
 				857F1C6226B285600028D3BC /* OrderCategoryTableViewCell.swift in Sources */,
 				857F1C2426B26EDF0028D3BC /* AppDelegate.swift in Sources */,
 				857F1C3E26B276210028D3BC /* TabBarController.swift in Sources */,
-				857F1C6026B285490028D3BC /* OrderTitleTableViewCell.swift in Sources */,
 				857F1C3826B270B00028D3BC /* OrderTableViewController.swift in Sources */,
 				857F1C2626B26EDF0028D3BC /* SceneDelegate.swift in Sources */,
 			);
@@ -295,12 +359,14 @@
 		};
 		857F1C3526B26EE20028D3BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93B66C2537B246191C1CB059 /* Pods-OrderRnD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 555WD7N8WG;
 				INFOPLIST_FILE = OrderRnD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,12 +380,14 @@
 		};
 		857F1C3626B26EE20028D3BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78FF520D7BF913C0E85241FC /* Pods-OrderRnD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 555WD7N8WG;
 				INFOPLIST_FILE = OrderRnD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

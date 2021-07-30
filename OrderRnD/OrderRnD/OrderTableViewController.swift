@@ -21,7 +21,10 @@ class OrderTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//
+//        navigationItem.largeTitleDisplayMode = .never
+
         tvList.rowHeight = 90
     }
 
@@ -72,20 +75,15 @@ class OrderTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell1 = tableView.dequeueReusableCell(withIdentifier: "orderTitleCell", for: indexPath) as! OrderTitleTableViewCell
+
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "orderCategoryCell", for: indexPath) as! OrderCategoryTableViewCell
 
         // Configure the cell...
-        cell1.lblOrder?.text = "Order"
         cell2.imgView?.image = UIImage(named: "review.jpg")
         cell2.lblText.text = list[indexPath.row]
 
-        if indexPath.row == 0 {
-            return cell1
-        }else {
-            return cell2
-        }
+        return cell2
+        
     }
 
     /*

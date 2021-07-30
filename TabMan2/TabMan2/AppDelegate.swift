@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TabMan2
 //
-//  Created by 박성훈 on 2021/07/29.
+//  Created by Hyeji on 2021/07/29.
 //
 
 import UIKit
