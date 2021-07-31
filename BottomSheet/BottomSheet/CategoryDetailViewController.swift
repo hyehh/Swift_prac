@@ -11,6 +11,8 @@ class CategoryDetailViewController: UIViewController {
 
     @IBOutlet weak var tvCategoryDetail: UITableView!
     
+    var indexPath = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,7 @@ class CategoryDetailViewController: UIViewController {
         tvCategoryDetail.dataSource = self
         tvCategoryDetail.delegate = self
         self.tvCategoryDetail.separatorStyle = .none
+        self.navigationItem.title = categoryList[indexPath]
     }
     
 
@@ -50,6 +53,6 @@ extension CategoryDetailViewController: UITableViewDataSource {
  
 extension CategoryDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 120
     }
 }
