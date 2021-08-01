@@ -32,9 +32,11 @@ class MyMenuViewController: UIViewController {
     }
     
     @IBAction func btnCart(_ sender: UIButton) {
+        
     }
     
     @IBAction func btnOrder(_ sender: UIButton) {
+        
     }
     
     /*
@@ -62,6 +64,11 @@ extension MyMenuViewController: UITableViewDataSource {
         cell.ivMyMenu.layer.cornerRadius = cell.ivMyMenu.frame.height / 2
         cell.ivMyMenu.clipsToBounds = true
         cell.ivMyMenu.image = UIImage(data: data!)
+        
+        cell.btnCartShape.layer.borderWidth = 1
+        cell.btnCartShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+        cell.btnCartShape.layer.cornerRadius = 15
+        cell.btnOrderShape.layer.cornerRadius = 15
         return cell
     }
     

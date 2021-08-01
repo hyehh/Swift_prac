@@ -473,6 +473,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnCartShape" destination="cog-RC-LBl" id="Q72-X3-e8N"/>
+                                            <outlet property="btnOrderShape" destination="kT1-D3-MZu" id="HB4-9p-JeD"/>
                                             <outlet property="ivMyMenu" destination="Rcj-Hy-bGf" id="44W-nR-t43"/>
                                             <outlet property="lblMyMenuName" destination="w99-mL-NDT" id="gfj-3F-zLf"/>
                                             <outlet property="lblMyMenuPersonal" destination="cUW-32-WfP" id="H1M-9T-s5a"/>
