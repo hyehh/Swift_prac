@@ -20,8 +20,15 @@
 		853744C226B3DE42003115A9 /* CategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744C126B3DE42003115A9 /* CategoryDetailTableViewCell.swift */; };
 		853744C626B3DED4003115A9 /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744C526B3DED4003115A9 /* CategoryDetailViewController.swift */; };
 		853744C826B3FF23003115A9 /* StoreSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744C726B3FF23003115A9 /* StoreSettingViewController.swift */; };
-		853744CA26B3FF98003115A9 /* NearStoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744C926B3FF98003115A9 /* NearStoreTableViewController.swift */; };
 		853744CC26B3FFB1003115A9 /* FrequentStoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744CB26B3FFB1003115A9 /* FrequentStoreTableViewController.swift */; };
+		853744CE26B5A246003115A9 /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744CD26B5A246003115A9 /* DrinkModel.swift */; };
+		853744D026B5A24A003115A9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744CF26B5A24A003115A9 /* UserModel.swift */; };
+		853744D226B5A250003115A9 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744D126B5A250003115A9 /* OrderModel.swift */; };
+		853744D626B5A86C003115A9 /* ShareVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744D526B5A86C003115A9 /* ShareVar.swift */; };
+		853744D826B5AC16003115A9 /* categoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744D726B5AC16003115A9 /* categoryDetailModel.swift */; };
+		853744DA26B62C01003115A9 /* AllStoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744D926B62C01003115A9 /* AllStoreTableViewController.swift */; };
+		853744DC26B62DFF003115A9 /* AllStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744DB26B62DFF003115A9 /* AllStoreModel.swift */; };
+		853744DE26B63900003115A9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853744DD26B63900003115A9 /* LocationModel.swift */; };
 		CB651EE44ED305F8126A0640 /* Pods_BottomSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA061DE9D8DC9367720F8C12 /* Pods_BottomSheet.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +49,15 @@
 		853744C126B3DE42003115A9 /* CategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		853744C526B3DED4003115A9 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		853744C726B3FF23003115A9 /* StoreSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSettingViewController.swift; sourceTree = "<group>"; };
-		853744C926B3FF98003115A9 /* NearStoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearStoreTableViewController.swift; sourceTree = "<group>"; };
 		853744CB26B3FFB1003115A9 /* FrequentStoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentStoreTableViewController.swift; sourceTree = "<group>"; };
+		853744CD26B5A246003115A9 /* DrinkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
+		853744CF26B5A24A003115A9 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		853744D126B5A250003115A9 /* OrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		853744D526B5A86C003115A9 /* ShareVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVar.swift; sourceTree = "<group>"; };
+		853744D726B5AC16003115A9 /* categoryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryDetailModel.swift; sourceTree = "<group>"; };
+		853744D926B62C01003115A9 /* AllStoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStoreTableViewController.swift; sourceTree = "<group>"; };
+		853744DB26B62DFF003115A9 /* AllStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStoreModel.swift; sourceTree = "<group>"; };
+		853744DD26B63900003115A9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		963D5F65ABC4EA2F8F87E0C4 /* Pods-BottomSheet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BottomSheet.debug.xcconfig"; path = "Target Support Files/Pods-BottomSheet/Pods-BottomSheet.debug.xcconfig"; sourceTree = "<group>"; };
 		BA061DE9D8DC9367720F8C12 /* Pods_BottomSheet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BottomSheet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,6 +95,9 @@
 		321A076526B3903300F1F352 /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
+				853744D126B5A250003115A9 /* OrderModel.swift */,
+				853744CF26B5A24A003115A9 /* UserModel.swift */,
+				853744CD26B5A246003115A9 /* DrinkModel.swift */,
 				321A076626B3903300F1F352 /* AppDelegate.swift */,
 				321A076826B3903300F1F352 /* SceneDelegate.swift */,
 				321A076A26B3903300F1F352 /* ViewController.swift */,
@@ -95,8 +112,12 @@
 				321A077126B3903C00F1F352 /* LaunchScreen.storyboard */,
 				321A077426B3903C00F1F352 /* Info.plist */,
 				853744C726B3FF23003115A9 /* StoreSettingViewController.swift */,
-				853744C926B3FF98003115A9 /* NearStoreTableViewController.swift */,
 				853744CB26B3FFB1003115A9 /* FrequentStoreTableViewController.swift */,
+				853744D526B5A86C003115A9 /* ShareVar.swift */,
+				853744D726B5AC16003115A9 /* categoryDetailModel.swift */,
+				853744D926B62C01003115A9 /* AllStoreTableViewController.swift */,
+				853744DB26B62DFF003115A9 /* AllStoreModel.swift */,
+				853744DD26B63900003115A9 /* LocationModel.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -233,15 +254,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				853744C226B3DE42003115A9 /* CategoryDetailTableViewCell.swift in Sources */,
-				853744CA26B3FF98003115A9 /* NearStoreTableViewController.swift in Sources */,
+				853744DA26B62C01003115A9 /* AllStoreTableViewController.swift in Sources */,
 				321A076B26B3903300F1F352 /* ViewController.swift in Sources */,
 				321A076726B3903300F1F352 /* AppDelegate.swift in Sources */,
 				853744C626B3DED4003115A9 /* CategoryDetailViewController.swift in Sources */,
 				853744C826B3FF23003115A9 /* StoreSettingViewController.swift in Sources */,
 				321A076926B3903300F1F352 /* SceneDelegate.swift in Sources */,
+				853744D626B5A86C003115A9 /* ShareVar.swift in Sources */,
+				853744D226B5A250003115A9 /* OrderModel.swift in Sources */,
 				853744CC26B3FFB1003115A9 /* FrequentStoreTableViewController.swift in Sources */,
+				853744DE26B63900003115A9 /* LocationModel.swift in Sources */,
+				853744D026B5A24A003115A9 /* UserModel.swift in Sources */,
+				853744CE26B5A246003115A9 /* DrinkModel.swift in Sources */,
+				853744D826B5AC16003115A9 /* categoryDetailModel.swift in Sources */,
 				32EBF78C26B392FC00F75F05 /* AllMenuViewController.swift in Sources */,
 				32EBF79526B3A1A100F75F05 /* AllMenuTableViewCell.swift in Sources */,
+				853744DC26B62DFF003115A9 /* AllStoreModel.swift in Sources */,
 				32EBF79226B39B1000F75F05 /* MyMenuTableViewCell.swift in Sources */,
 				32EBF78F26B3930E00F75F05 /* MyMenuViewController.swift in Sources */,
 			);

@@ -17,7 +17,7 @@ class StoreSettingViewController: TabmanViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NearStoreTableViewController") as! NearStoreTableViewController
+        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AllStoreTableViewController") as! AllStoreTableViewController
         let vc3 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FrequentStoreTableViewController") as! FrequentStoreTableViewController
             
         viewControllers.append(vc2)

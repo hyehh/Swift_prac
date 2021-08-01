@@ -9,7 +9,7 @@ import UIKit
 
 class MyMenuTableViewCell: UITableViewCell {
     
-    // 선택 시 및 미선택 시 색상 모두 화이트 설정
+    // cell 선택 시 및 미선택 시 색상 모두 화이트 설정
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {

@@ -8,6 +8,7 @@
 import UIKit
 
 var categoryList = ["NEW", "추천", "콜드 브루", "에스프레소", "프라푸치노", "블렌디드", "피지오", "티바나", "브루드 커피", "기타", "병음료"]
+var categoryImageList = [UIImage?]()
 
 class AllMenuViewController: UIViewController {
 
@@ -23,6 +24,16 @@ class AllMenuViewController: UIViewController {
         tvAllMenu.delegate = self
         self.tvAllMenu.separatorStyle = .none
         
+        serverImageDownloaded()
+        
+    }
+    
+    func serverImageDownloaded() {
+        for i in 0..<categoryList.count {
+            let url = URL(string: "http://\(macIp):8080/starbucks/image/category\(i).jpg")
+            let data = try? Data(contentsOf: url!)
+            categoryImageList.append(UIImage(data: data!))
+        }
     }
     
     // MARK: - Navigation
@@ -36,6 +47,7 @@ class AllMenuViewController: UIViewController {
             let indexPath = self.tvAllMenu.indexPath(for: cell)
             let categoryDetailViewController = segue.destination as! CategoryDetailViewController
             categoryDetailViewController.indexPath = indexPath!.row
+            category = categoryList[indexPath!.row]
         }
     }
     
@@ -45,7 +57,9 @@ class AllMenuViewController: UIViewController {
 extension AllMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allMenuCell") as! AllMenuTableViewCell
-        cell.ivAllMenu.image = UIImage(named: "lamp_red.png")
+        cell.ivAllMenu.image = categoryImageList[indexPath.row]
+        cell.ivAllMenu.layer.cornerRadius = cell.ivAllMenu.frame.height / 2
+        cell.ivAllMenu.clipsToBounds = true
         cell.lblAllMenu.text = categoryList[indexPath.row]
         return cell
     }
