@@ -42,7 +42,7 @@ class ViewController: TabmanViewController {
         }
         
         bar.indicator.weight = .light
-        bar.indicator.tintColor = .systemGreen
+        bar.indicator.tintColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1)
         
         bar.indicator.overscrollBehavior = .compress
         

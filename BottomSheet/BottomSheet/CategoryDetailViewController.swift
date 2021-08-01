@@ -19,17 +19,19 @@ class CategoryDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tvCategoryDetail.dataSource = self
-        tvCategoryDetail.delegate = self
+        self.tvCategoryDetail.dataSource = self
+        self.tvCategoryDetail.delegate = self
         self.tvCategoryDetail.separatorStyle = .none
         self.navigationItem.title = categoryList[indexPath]
+        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let categoryDetailModel = CategoryDetailModel()
         categoryDetailModel.delegate = self
         categoryDetailModel.downloadItems()
-    }
+            }
 
     /*
     // MARK: - Navigation
@@ -48,13 +50,25 @@ extension CategoryDetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryDetailCell") as! CategoryDetailTableViewCell
         let item: DrinkModel = dataItem[indexPath.row] as! DrinkModel
         
-        // cell.ivCategoryDetail.image = UIImage(named: "")
         cell.lblCategoryDetailName.text = "\(item.name!)"
-        cell.lblCategoryDetailPrice.text = "\(item.price!)"
+        cell.lblCategoryDetailPrice.text = "\(DecimalWon(value: item.price!))"
+        
+        let url = URL(string: "\(item.img!)")
+        let data = try? Data(contentsOf: url!)
+        cell.ivCategoryDetail.layer.cornerRadius = cell.ivCategoryDetail.frame.height / 2
+        cell.ivCategoryDetail.clipsToBounds = true
+        cell.ivCategoryDetail.image = UIImage(data: data!)
         
         return cell
     }
     
+    func DecimalWon(value: Int) -> String{
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let result = numberFormatter.string(from: NSNumber(value: value))! + "원"
+            
+            return result
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataItem.count
@@ -68,7 +82,7 @@ extension CategoryDetailViewController: UITableViewDelegate {
     }
 }
 
-extension CategoryDetailViewController: CategoryDetailModelProtocol {
+extension CategoryDetailViewController : CategoryDetailModelProtocol {
     func itemDownloaded(items: NSArray) {
         dataItem = items
         self.tvCategoryDetail.reloadData()

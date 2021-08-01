@@ -47,7 +47,7 @@ class AllMenuViewController: UIViewController {
             let indexPath = self.tvAllMenu.indexPath(for: cell)
             let categoryDetailViewController = segue.destination as! CategoryDetailViewController
             categoryDetailViewController.indexPath = indexPath!.row
-            category = categoryList[indexPath!.row]
+            category = "\(indexPath!.row)"
         }
     }
     

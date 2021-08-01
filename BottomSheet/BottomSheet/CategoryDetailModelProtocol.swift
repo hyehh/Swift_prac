@@ -1,5 +1,5 @@
 //
-//  CategoryDetailModel.swift
+//  CategoryDetailModelProtocol.swift
 //  BottomSheet
 //
 //  Created by Hyeji on 2021/08/01.
@@ -7,23 +7,18 @@
 
 import Foundation
 
-protocol CategoryDetailModelProtocol : AnyObject {
+protocol CategoryDetailModelProtocol {
     func itemDownloaded(items: NSArray)
 }
 
-class CategoryDetailModel : NSObject {
+class CategoryDetailModel {
     var delegate: CategoryDetailModelProtocol!
-    var urlPath = "http://\(macIp):8080/starbucks/jsp/"
+    var urlPath = "http://\(macIp):8080/starbucks/jsp/categoryDetailSelect.jsp"
     
     func downloadItems() {
-        var urlAdd = ""
-        if category == "1" {
-            urlAdd = "recommendDetailSelect.jsp?userId=\(userId)"
-        }else{
-            urlAdd = "categoryDetailSelect.jsp?category=\(category)"
-        }
         
-        urlPath = urlPath + urlAdd
+//        let urlAdd = "?category=\(category)"
+//        urlPath = urlPath + urlAdd
         print(urlPath)
         let url: URL = URL(string: urlPath)!
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -56,9 +51,9 @@ class CategoryDetailModel : NSObject {
             if let cd = jsonElement["cd"] as? String,
                let name = jsonElement["name"] as? String,
                let img = jsonElement["img"] as? String,
-               let price = jsonElement["price"] as? String{
+               let price = jsonElement["price"] as? Int{
                 
-                let query = DrinkModel(cd: cd, name: name, img: img, price: Int(price)!)
+                let query = DrinkModel(cd: cd, name: name, img: img, price: price)
                 locations.add(query)
                 
             }

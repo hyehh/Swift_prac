@@ -1,6 +1,6 @@
 //
 //  CategoryDetailModel.swift
-//  BottomSheet
+//  Select
 //
 //  Created by Hyeji on 2021/08/01.
 //
@@ -13,17 +13,12 @@ protocol CategoryDetailModelProtocol : AnyObject {
 
 class CategoryDetailModel : NSObject {
     var delegate: CategoryDetailModelProtocol!
-    var urlPath = "http://\(macIp):8080/starbucks/jsp/"
+    var urlPath = "http://\(macIp):8080/starbucks/jsp/categoryDetailSelect.jsp"
     
     func downloadItems() {
-        var urlAdd = ""
-        if category == "1" {
-            urlAdd = "recommendDetailSelect.jsp?userId=\(userId)"
-        }else{
-            urlAdd = "categoryDetailSelect.jsp?category=\(category)"
-        }
         
-        urlPath = urlPath + urlAdd
+//        let urlAdd = "?category=\(category)"
+//        urlPath = urlPath + urlAdd
         print(urlPath)
         let url: URL = URL(string: urlPath)!
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -52,14 +47,16 @@ class CategoryDetailModel : NSObject {
         print(jsonResult.count)
         
         for i in 0..<jsonResult.count {
+            print("여기?")
             jsonElement = jsonResult[i] as! NSDictionary
             if let cd = jsonElement["cd"] as? String,
                let name = jsonElement["name"] as? String,
                let img = jsonElement["img"] as? String,
                let price = jsonElement["price"] as? String{
-                
+                print("여기?")
                 let query = DrinkModel(cd: cd, name: name, img: img, price: Int(price)!)
                 locations.add(query)
+                print("여기?")
                 
             }
         }

@@ -1,8 +1,8 @@
 //
 //  DrinkModel.swift
-//  IOS_SirenOrder
+//  Select
 //
-//  Created by Hyeji on 2021/07/31.
+//  Created by Hyeji on 2021/08/01.
 //
 
 import Foundation
@@ -48,7 +48,7 @@ class DrinkModel : NSObject{
 //        self.cholesterol=cholesterol
 //        self.carbo=carbo
 //        self.type=type
-//        self.price=price 
+//        self.price=price
 //    }
     
     // 2021.08.01 조혜지 categoryDetailModel에서 사용할 init 추가

@@ -23,6 +23,7 @@ class AllStoreTableViewController: UITableViewController {
         let allStoreModel = AllStoreModel()
         allStoreModel.delegate = self
         allStoreModel.downloadItems()
+        tvAllStore.rowHeight = 103
     }
 
     // MARK: - Table view data source
@@ -39,14 +40,14 @@ class AllStoreTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "allStoreCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "allStoreCell", for: indexPath) as! AllStoreTableViewCell
 
         // Configure the cell...
         // let item = LocationModel
         let item: LocationModel = dataItem[indexPath.row] as! LocationModel
         
-        cell.textLabel?.text = "\(item.storename!)"
-        cell.detailTextLabel?.text = "\(item.address!)"
+        cell.lblAllStoreName.text = "\(item.storename!)"
+        cell.lblAllStoreAddress.text = "\(item.address!)"
 
         return cell
     }

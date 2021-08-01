@@ -1,5 +1,5 @@
 //
-//  CategoryDetailModel.swift
+//  MyMenuModel.swift
 //  BottomSheet
 //
 //  Created by Hyeji on 2021/08/01.
@@ -7,22 +7,17 @@
 
 import Foundation
 
-protocol CategoryDetailModelProtocol : AnyObject {
+protocol MyMenuModelProtocol : AnyObject {
     func itemDownloaded(items: NSArray)
 }
 
-class CategoryDetailModel : NSObject {
-    var delegate: CategoryDetailModelProtocol!
-    var urlPath = "http://\(macIp):8080/starbucks/jsp/"
+class MyMenuModel : NSObject {
+    var delegate: MyMenuModelProtocol!
+    var urlPath = "http://\(macIp):8080/starbucks/jsp/myMenuSelect.jsp"
     
     func downloadItems() {
-        var urlAdd = ""
-        if category == "1" {
-            urlAdd = "recommendDetailSelect.jsp?userId=\(userId)"
-        }else{
-            urlAdd = "categoryDetailSelect.jsp?category=\(category)"
-        }
         
+        let urlAdd = "?userId=\(userId)"
         urlPath = urlPath + urlAdd
         print(urlPath)
         let url: URL = URL(string: urlPath)!
@@ -53,12 +48,14 @@ class CategoryDetailModel : NSObject {
         
         for i in 0..<jsonResult.count {
             jsonElement = jsonResult[i] as! NSDictionary
-            if let cd = jsonElement["cd"] as? String,
+            if let personalId = jsonElement["personalId"] as? String,
+               let personalContent = jsonElement["personalContent"] as? String,
+               let cd = jsonElement["cd"] as? String,
                let name = jsonElement["name"] as? String,
-               let img = jsonElement["img"] as? String,
-               let price = jsonElement["price"] as? String{
+               let price = jsonElement["price"] as? String,
+               let img = jsonElement["img"] as? String{
                 
-                let query = DrinkModel(cd: cd, name: name, img: img, price: Int(price)!)
+                let query = PersonalModel(personalId: personalId, personalContent: personalContent, cd: cd, name: name, price: Int(price)!, img: img)
                 locations.add(query)
                 
             }
