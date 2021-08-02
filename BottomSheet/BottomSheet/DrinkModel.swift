@@ -31,25 +31,25 @@ class DrinkModel : NSObject{
         
     }
     
-//    init(cd : String, name : String, img : String, allergie : String, content : String, category : String, volume : String, kcal : String, protein : String, fat : String, sodium : String, sugars : String, caffeine : String, cholesterol : String, carbo : String, type : Int, price : Int){
-//        self.cd=cd
-//        self.name=name
-//        self.img=img
-//        self.allergie=allergie
-//        self.content=content
-//        self.category=category
-//        self.volume=volume
-//        self.kcal=kcal
-//        self.protein=protein
-//        self.fat=fat
-//        self.sodium=sodium
-//        self.sugars=sugars
-//        self.caffeine=caffeine
-//        self.cholesterol=cholesterol
-//        self.carbo=carbo
-//        self.type=type
-//        self.price=price 
-//    }
+    init(cd : String, name : String, img : String, allergie : String, content : String, category : String, volume : String, kcal : String, protein : String, fat : String, sodium : String, sugars : String, caffeine : String, cholesterol : String, carbo : String, type : Int, price : Int){
+        self.cd=cd
+        self.name=name
+        self.img=img
+        self.allergie=allergie
+        self.content=content
+        self.category=category
+        self.volume=volume
+        self.kcal=kcal
+        self.protein=protein
+        self.fat=fat
+        self.sodium=sodium
+        self.sugars=sugars
+        self.caffeine=caffeine
+        self.cholesterol=cholesterol
+        self.carbo=carbo
+        self.type=type
+        self.price=price 
+    }
     
     // 2021.08.01 조혜지 CategoryDetailModel에서 사용할 init 추가
     init(cd: String, name : String, img : String, price : Int) {
