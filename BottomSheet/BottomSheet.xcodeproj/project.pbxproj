@@ -13,6 +13,8 @@
 		321A076E26B3903300F1F352 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321A076C26B3903300F1F352 /* Main.storyboard */; };
 		321A077026B3903C00F1F352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321A076F26B3903C00F1F352 /* Assets.xcassets */; };
 		321A077326B3903C00F1F352 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321A077126B3903C00F1F352 /* LaunchScreen.storyboard */; };
+		321E2C0A26B907ED00822BBE /* PersonalOptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321E2C0926B907ED00822BBE /* PersonalOptionDetailViewController.swift */; };
+		321E2C0F26B9147900822BBE /* SharePersonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321E2C0E26B9147900822BBE /* SharePersonal.swift */; };
 		32EBF78C26B392FC00F75F05 /* AllMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBF78B26B392FC00F75F05 /* AllMenuViewController.swift */; };
 		32EBF78F26B3930E00F75F05 /* MyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBF78E26B3930E00F75F05 /* MyMenuViewController.swift */; };
 		32EBF79226B39B1000F75F05 /* MyMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBF79126B39B1000F75F05 /* MyMenuTableViewCell.swift */; };
@@ -55,6 +57,8 @@
 		321A076F26B3903C00F1F352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		321A077226B3903C00F1F352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		321A077426B3903C00F1F352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		321E2C0926B907ED00822BBE /* PersonalOptionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalOptionDetailViewController.swift; sourceTree = "<group>"; };
+		321E2C0E26B9147900822BBE /* SharePersonal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePersonal.swift; sourceTree = "<group>"; };
 		32EBF78B26B392FC00F75F05 /* AllMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMenuViewController.swift; sourceTree = "<group>"; };
 		32EBF78E26B3930E00F75F05 /* MyMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuViewController.swift; sourceTree = "<group>"; };
 		32EBF79126B39B1000F75F05 /* MyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,7 +147,6 @@
 				85CB76F126B644D70052967A /* CategoryDetailModel.swift */,
 				853744CD26B5A246003115A9 /* DrinkModel.swift */,
 				32EBF78B26B392FC00F75F05 /* AllMenuViewController.swift */,
-				853744D526B5A86C003115A9 /* ShareVar.swift */,
 				85423B5A26B7BBAB00FFEF85 /* MyMenuInsertModel.swift */,
 				85423B6E26B8523300FFEF85 /* CartInsert.swift */,
 				85CB771526B65AE20052967A /* PersonalModel.swift */,
@@ -155,11 +158,14 @@
 				85423B6A26B8096C00FFEF85 /* PersonalOptionContentTableViewCell.swift */,
 				85423B5C26B7C9D900FFEF85 /* DrinkDetailViewController.swift */,
 				853744C526B3DED4003115A9 /* CategoryDetailViewController.swift */,
+				85423B5326B79EA700FFEF85 /* PersonalViewController.swift */,
 				321A076F26B3903C00F1F352 /* Assets.xcassets */,
 				321A076C26B3903300F1F352 /* Main.storyboard */,
-				85423B5326B79EA700FFEF85 /* PersonalViewController.swift */,
+				853744D526B5A86C003115A9 /* ShareVar.swift */,
 				85423B6226B7DF5C00FFEF85 /* PersonalOptionViewController.swift */,
+				321E2C0926B907ED00822BBE /* PersonalOptionDetailViewController.swift */,
 				85423B5826B7B8EC00FFEF85 /* AlertController.swift */,
+				321E2C0E26B9147900822BBE /* SharePersonal.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -303,11 +309,13 @@
 				321A076B26B3903300F1F352 /* ViewController.swift in Sources */,
 				85423B5926B7B8EC00FFEF85 /* AlertController.swift in Sources */,
 				321A076726B3903300F1F352 /* AppDelegate.swift in Sources */,
+				321E2C0A26B907ED00822BBE /* PersonalOptionDetailViewController.swift in Sources */,
 				85423B6B26B8096C00FFEF85 /* PersonalOptionContentTableViewCell.swift in Sources */,
 				85CB771626B65AE20052967A /* PersonalModel.swift in Sources */,
 				85423B6326B7DF5C00FFEF85 /* PersonalOptionViewController.swift in Sources */,
 				853744C626B3DED4003115A9 /* CategoryDetailViewController.swift in Sources */,
 				853744C826B3FF23003115A9 /* StoreSettingViewController.swift in Sources */,
+				321E2C0F26B9147900822BBE /* SharePersonal.swift in Sources */,
 				85CB76F226B644D70052967A /* CategoryDetailModel.swift in Sources */,
 				321A076926B3903300F1F352 /* SceneDelegate.swift in Sources */,
 				85423B5B26B7BBAB00FFEF85 /* MyMenuInsertModel.swift in Sources */,

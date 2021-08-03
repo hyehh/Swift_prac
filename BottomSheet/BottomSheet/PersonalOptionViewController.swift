@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialBottomSheet
 
 let personalList = ["", "커피", "시럽", "얼음", "휘핑크림", "드리즐", "컵&리드 옵션"]
 
@@ -169,15 +170,33 @@ class PersonalOptionViewController: UIViewController {
         
     }
     
-    /*
+    @IBAction func btnPersonalDetail(_ sender: UIButton) {
+
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "sgPersonalDetail" {
+            let personalOptionDetailViewController = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionDetailViewController") as! PersonalOptionDetailViewController
+            
+            let cellContent = sender as! PersonalOptionContentTableViewCell
+            let indexPath = self.tvPersonalOption.indexPath(for: cellContent)
+            
+            print(indexPath!.row, "ddd")
+            
+            personalOptionDetailViewController.receivedIndexPath = indexPath!.row
+            
+            let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: personalOptionDetailViewController)
+            bottomSheet.mdc_bottomSheetPresentationController?.preferredSheetHeight = 570
+            present(bottomSheet, animated: true, completion: nil)
+        }
     }
-    */
+    
 
 }
 

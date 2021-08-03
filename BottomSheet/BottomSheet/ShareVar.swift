@@ -7,7 +7,7 @@
 
 import Foundation
 
-let macIp = "192.168.0.5"
+let macIp = "192.168.0.92"
 var userId = "aaa"
 var category = ""
 
