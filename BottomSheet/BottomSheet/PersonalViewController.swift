@@ -28,9 +28,6 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
     var dataItem: NSArray = NSArray()
     var idItem: NSMutableArray = NSMutableArray()
     var pId = ""
-    var count = 0
-    var price = 0
-    var changedPrice = 0
     var myMenuState = false
         
     override func viewDidLoad() {
@@ -38,13 +35,48 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         let drinkInfoModel = DrinkInfoModel()
         drinkInfoModel.delegate = self
         drinkInfoModel.downloadItems(cd: receivedCd)
-        
-        initSetting()
+        sharePersonalDataInit()
     }
     
+    func sharePersonalDataInit() {
+        SharePersonalData.drinkCount = 1
+        SharePersonalData.btnBool = false
+        SharePersonalData.myMenuSelect = false
+        SharePersonalData.personalOptionPrice = 0
+        SharePersonalData.pPrice = 0
+        SharePersonalData.pChangedPrice = 0
+        SharePersonalData.size = 0
+        pContent = ""
+        
+        SharePersonal.coffee = ""
+        SharePersonal.vSyrup = ""
+        SharePersonal.hSyrup = ""
+        SharePersonal.cSyrup = ""
+        SharePersonal.ice = ""
+        SharePersonal.whip = ""
+        SharePersonal.caramelDrizzle = ""
+        SharePersonal.chocoDrizzle = ""
+        SharePersonal.lid = ""
+        SharePersonal.coffeeCount = 0
+        SharePersonal.coffeeState = 0
+        SharePersonal.coffeePrice = 0
+        SharePersonal.vSyrupCount = 0
+        SharePersonal.hSyrupCount = 0
+        SharePersonal.cSyrupCount = 0
+        SharePersonal.vSyrupPrice = 0
+        SharePersonal.hSyrupPrice = 0
+        SharePersonal.cSyrupPrice = 0
+        SharePersonal.whipState = 0
+        SharePersonal.whipPrice = 0
+        SharePersonal.caramelDrizzleState = 0
+        SharePersonal.chocoDrizzleState = 0
+        SharePersonal.carameldrizzlePrice = 0
+        SharePersonal.chocolatedrizzlePrice = 0
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        initSetting()
+        print(SharePersonalData.personalOptionPrice)
     }
     
     func initSetting() {
@@ -58,9 +90,19 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         btnGrandeShape.layer.cornerRadius = 15
         btnVentiShape.layer.cornerRadius = 15
         
-        btnTallShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
-        btnGrandeShape.layer.borderColor = UIColor.systemGray5.cgColor
-        btnVentiShape.layer.borderColor = UIColor.systemGray5.cgColor
+        if SharePersonalData.size == 0 {
+            btnTallShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            btnGrandeShape.layer.borderColor = UIColor.systemGray5.cgColor
+            btnVentiShape.layer.borderColor = UIColor.systemGray5.cgColor
+        }else if SharePersonalData.size == 500 {
+            btnTallShape.layer.borderColor = UIColor.systemGray5.cgColor
+            btnGrandeShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            btnVentiShape.layer.borderColor = UIColor.systemGray5.cgColor
+        }else {
+            btnTallShape.layer.borderColor = UIColor.systemGray5.cgColor
+            btnGrandeShape.layer.borderColor = UIColor.systemGray5.cgColor
+            btnVentiShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+        }
         btnCartShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
         
         btnMyMenuNonSelect.isHidden = false
@@ -71,13 +113,25 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         
         scShape.setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         
-        lblPersonalContent.text = pContent
-        lblPersonalPrice.text = pPrice
-        
-        if lblDrinkCount.text == "1" {
-            btnMinus.isEnabled = false
+        if SharePersonalData.personalOptionPrice == 0 {
+            lblPersonalPrice.text = ""
+        }else {
+            lblPersonalPrice.text = DecimalWon(value: SharePersonalData.personalOptionPrice)
         }
-        count = Int(lblDrinkCount.text!)!
+        
+        pContent = "\(SharePersonal.coffee)\(SharePersonal.vSyrup)\(SharePersonal.hSyrup)\(SharePersonal.cSyrup)\(SharePersonal.ice)\(SharePersonal.whip)\(SharePersonal.caramelDrizzle)\(SharePersonal.chocoDrizzle)\(SharePersonal.lid)"
+        if pContent != "" {
+            let firstIndex = pContent.index(pContent.startIndex, offsetBy: 0)
+            let lastIndex = pContent.index(pContent.startIndex, offsetBy: pContent.count-2)
+            lblPersonalContent.text = String(pContent[firstIndex..<lastIndex])
+        }else {
+            lblPersonalContent.text = ""
+        }
+        
+        lblDrinkPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        lblDrinkCount.text = String(SharePersonalData.drinkCount)
+        btnMinus.isEnabled = SharePersonalData.btnBool
+
     }
     
     @IBAction func btnTall(_ sender: UIButton) {
@@ -85,6 +139,8 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         btnGrandeShape.layer.borderColor = UIColor.systemGray5.cgColor
         btnVentiShape.layer.borderColor = UIColor.systemGray5.cgColor
         cupSize = "Tall"
+        SharePersonalData.size = 0
+        lblDrinkPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
     }
     
     @IBAction func btnGrande(_ sender: UIButton) {
@@ -92,6 +148,8 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         btnGrandeShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
         btnVentiShape.layer.borderColor = UIColor.systemGray5.cgColor
         cupSize = "Grande"
+        SharePersonalData.size = 500
+        lblDrinkPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
     }
     
     @IBAction func btnVenti(_ sender: UIButton) {
@@ -99,6 +157,8 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         btnGrandeShape.layer.borderColor = UIColor.systemGray5.cgColor
         btnVentiShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
         cupSize = "Venti"
+        SharePersonalData.size = 1000
+        lblDrinkPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
     }
     
     @IBAction func btnCupChioce(_ sender: UISegmentedControl) {
@@ -113,21 +173,23 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
     }
     
     @IBAction func btnMinus(_ sender: UIButton) {
-        count -= 1
-        lblDrinkCount.text = String(count)
-        changedPrice = price * count
-        lblDrinkPrice.text = DecimalWon(value: changedPrice)
-        if count == 1 {
+        SharePersonalData.drinkCount -= 1
+        lblDrinkCount.text = String(SharePersonalData.drinkCount)
+        SharePersonalData.pChangedPrice = SharePersonalData.pPrice * SharePersonalData.drinkCount
+        lblDrinkPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        if SharePersonalData.drinkCount == 1 {
             btnMinus.isEnabled = false
+            SharePersonalData.btnBool = false
         }
     }
     
     @IBAction func btnPlus(_ sender: UIButton) {
-        count += 1
-        lblDrinkCount.text = String(count)
-        changedPrice = price * count
-        lblDrinkPrice.text = DecimalWon(value: changedPrice)
+        SharePersonalData.drinkCount += 1
+        lblDrinkCount.text = String(SharePersonalData.drinkCount)
+        SharePersonalData.pChangedPrice = SharePersonalData.pPrice * SharePersonalData.drinkCount
+        lblDrinkPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
         btnMinus.isEnabled = true
+        SharePersonalData.btnBool = true
     }
     
     func DecimalWon(value: Int) -> String{
@@ -199,7 +261,7 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
     
     @IBAction func btnCart(_ sender: UIButton) {
         let cartInsertModel = CartInsertModel()
-        let result = cartInsertModel.InsertItems(cartCount: count, cartPersonal: "\(iceHot),\(cupSize),\(cupType),\(pContent)", cd: receivedCd, userId: userId)
+        let result = cartInsertModel.InsertItems(cartCount: SharePersonalData.drinkCount, cartPersonal: "\(iceHot),\(cupSize),\(cupType),\(pContent)", cd: receivedCd, userId: userId)
         
         if result{
             let myMenuCheckController = UIAlertController(title: "추가", message: "장바구니에 추가되었습니다!", preferredStyle: .alert)
@@ -221,11 +283,26 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         }
     }
     
+    @IBAction func btnOrder(_ sender: UIButton) {
+        if storeName == "" {
+            let resultAlert = UIAlertController(title: "주문할 매장을 선택해 주세요!", message: nil, preferredStyle: .alert)
+            let onAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in
+                let allStoreTableViewController = self.storyboard!.instantiateViewController(withIdentifier: "AllStoreTableViewController")
+                allStoreTableViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                self.present(allStoreTableViewController, animated: true)
+            })
+            resultAlert.addAction(onAction)
+            present(resultAlert, animated: true, completion: nil)
+        }else {
+            
+        }
+    }
+    
     func drinkModel() {
         let item: DrinkModel = dataItem[0] as! DrinkModel
                 
-        price = item.price!
-        changedPrice = item.price!
+        SharePersonalData.pPrice = item.price!
+        SharePersonalData.pChangedPrice = item.price!
         lblDrinkName.text = item.name!
         lblDrinkPrice.text = "\(DecimalWon(value: item.price!))"
 
@@ -250,7 +327,7 @@ class PersonalViewController: UIViewController { // 2021.08.02 조혜지 퍼스�
         // Pass the selected object to the new view controller.
         if segue.identifier == "sgPersonalOption" {
             let personalOptionViewController = segue.destination as! PersonalOptionViewController
-            personalOptionViewController.receivedData(lblDrinkName.text!, price, changedPrice, count, myMenuState, receivedCd, pId)
+            personalOptionViewController.receivedData(lblDrinkName.text!, myMenuState, receivedCd, pId)
         }
     }
     

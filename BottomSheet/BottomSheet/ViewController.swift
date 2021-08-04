@@ -11,6 +11,7 @@ import Pageboy
 
 class ViewController: TabmanViewController {
 
+    @IBOutlet weak var lblView: UIView!
     private var viewControllers: Array<UIViewController> = []
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class ViewController: TabmanViewController {
         bar.layout.transitionStyle = .snap // Customize
 
         // Add to view
-        addBar(bar, dataSource: self, at: .top)
+        addBar(bar, dataSource: self, at: .custom(view: lblView, layout: .none))
         
         bar.backgroundView.style = .blur(style: .regular)
         
@@ -47,7 +48,6 @@ class ViewController: TabmanViewController {
         bar.indicator.overscrollBehavior = .compress
         
         bar.indicator.overscrollBehavior = .bounce
-        
     }
 
 }

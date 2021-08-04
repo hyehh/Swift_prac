@@ -38,13 +38,33 @@ class PersonalOptionDetailViewController: UIViewController {
     
     var receivedIndexPath = 0
     var btnCount = 0
-    var espressoCount = 0
+    var espressoCount = SharePersonal.coffeeCount
     var espressoMessage = ""
-    var decaffeination = 0
-    var halfDecaffeination = 0
-    var hazelnutCount = 0
-    var vanillaCount = 0
-    var caramelCount = 0
+    var decaffeination = false
+    var halfDecaffeination = false
+    var coffeeStateCount = 0
+    var hazelnutCount = SharePersonal.hSyrupCount
+    var vanillaCount = SharePersonal.vSyrupCount
+    var caramelCount = SharePersonal.cSyrupCount
+    var icedMessage = ""
+    var normalWhipS = false
+    var normalWhipR = false
+    var normalWhipB = false
+    var espressoWhipS = false
+    var espressoWhipR = false
+    var espressoWhipB = false
+    var whipMessage = ""
+    var caramelS = false
+    var caramelR = false
+    var caramelB = false
+    var chocolateS = false
+    var chocolateR = false
+    var chocolateB = false
+    var caramelMessage = ""
+    var chocolateMessage = ""
+    var whipCount = 0
+    var caramleDrizzleCount = 0
+    var chocoDrizzleCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,9 +109,26 @@ class PersonalOptionDetailViewController: UIViewController {
         if receivedIndexPath == 1 {
             lblCustomMessage.text = "에스프레소를 커스텀으로 즐겨보세요!"
             lblOptionName.text = "추가 옵션"
+            lblAddCount.text = String(SharePersonal.coffeeCount)
+            if SharePersonal.coffeeState == 1 {
+                btnAddOption1.layer.borderWidth = 1.5
+                btnAddOption1.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                coffeeStateCount = 1
+                espressoMessage = "디카페인"
+            }else if SharePersonal.coffeeState == 2 {
+                btnAddOption2.layer.borderWidth = 1.5
+                btnAddOption2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                coffeeStateCount = 2
+                espressoMessage = "1/2 디카페인"
+            }
             
+            if espressoCount != 0 {
+                btnMinus.isEnabled = true
+            }else {
+                btnMinus.isEnabled = false
+            }
+
             lblAddTitle.text = "에스프레소 샷"
-            btnMinus.isEnabled = false
             
             lblAddTitle2.isHidden = true
             lblAddCount2.isHidden = true
@@ -113,6 +150,9 @@ class PersonalOptionDetailViewController: UIViewController {
         }else if receivedIndexPath == 2 {
             lblCustomMessage.text = "시럽 권장수량 : 톨(3) 그란데(4) 벤티(5)"
             lblOptionName.text = "추가 옵션"
+            lblAddCount.text = String(SharePersonal.vSyrupCount)
+            lblAddCount2.text = String(SharePersonal.hSyrupCount)
+            lblAddCount3.text = String(SharePersonal.cSyrupCount)
 
             lblAddTitle.text = "바닐라 시럽"
             lblAddTitle2.text = "헤이즐넛 시럽"
@@ -139,6 +179,31 @@ class PersonalOptionDetailViewController: UIViewController {
             lblCustomMessage.text = "얼음의 양과 음료의 양은 무관합니다."
             lblOptionName.text = "기본 옵션"
             lblAddTitle.text = "얼음"
+            btnRegular.layer.borderWidth = 1.5
+            btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            if SharePersonal.ice == "얼음 없이, " {
+                btnNo.layer.borderWidth = 1.5
+                btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                icedMessage = "얼음 없이, "
+            }else if SharePersonal.ice == "얼음 적게, " {
+                btnSmall.layer.borderWidth = 1.5
+                btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                icedMessage = "얼음 적게, "
+            }else if SharePersonal.ice == "얼음 보통, " {
+                btnRegular.layer.borderWidth = 1.5
+                btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                icedMessage = "얼음 보통, "
+            }else if SharePersonal.ice == "얼음 많이, " {
+                btnBig.layer.borderWidth = 1.5
+                btnBig.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                icedMessage = "얼음 많이, "
+            }
             
             lblAddCount.isHidden = true
             btnMinus.isHidden = true
@@ -162,6 +227,37 @@ class PersonalOptionDetailViewController: UIViewController {
             lblOptionName.text = "추가 옵션"
             lblAddTitle.text = "일반 휘핑"
             lblAddTitle3.text = "에스프레소 휘핑"
+            if SharePersonal.whipState == 1 {
+                btnNo.layer.borderWidth = 1.5
+                btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                whipCount = 1
+                whipMessage = "일반 휘핑 적게, "
+            }else if SharePersonal.whipState == 2 {
+                btnSmall.layer.borderWidth = 1.5
+                btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                whipCount = 2
+                whipMessage = "일반 휘핑 보통, "
+            }else if SharePersonal.whipState == 3 {
+                btnRegular.layer.borderWidth = 1.5
+                btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                whipCount = 3
+                whipMessage = "일반 휘핑 많이, "
+            }else if SharePersonal.whipState == 4 {
+                btnSmall2.layer.borderWidth = 1.5
+                btnSmall2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                whipCount = 4
+                whipMessage = "에스프레소 휘핑 적게, "
+            }else if SharePersonal.whipState == 5 {
+                btnRegular2.layer.borderWidth = 1.5
+                btnRegular2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                whipCount = 5
+                whipMessage = "에스프레소 휘핑 보통, "
+            }else if SharePersonal.whipState == 6 {
+                btnBig2.layer.borderWidth = 1.5
+                btnBig2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                whipCount = 6
+                whipMessage = "에스프레소 휘핑 많이, "
+            }
             
             lblAddCount.isHidden = true
             btnMinus.isHidden = true
@@ -187,6 +283,38 @@ class PersonalOptionDetailViewController: UIViewController {
             lblOptionName.text = "추가 옵션"
             lblAddTitle.text = "카라멜 드리즐"
             lblAddTitle3.text = "초콜릿 드리즐"
+            if SharePersonal.caramelDrizzleState == 1 {
+                btnNo.layer.borderWidth = 1.5
+                btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                caramleDrizzleCount = 1
+                caramelMessage = "카라멜 드리즐 적게, "
+            }else if SharePersonal.caramelDrizzleState == 2 {
+                btnSmall.layer.borderWidth = 1.5
+                btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                caramleDrizzleCount = 2
+                caramelMessage = "카라멜 드리즐 보통, "
+            }else if SharePersonal.caramelDrizzleState == 3 {
+                btnRegular.layer.borderWidth = 1.5
+                btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                caramleDrizzleCount = 3
+                caramelMessage = "카라멜 드리즐 많이, "
+            }
+            if SharePersonal.chocoDrizzleState == 1 {
+                btnSmall2.layer.borderWidth = 1.5
+                btnSmall2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                chocoDrizzleCount = 1
+                chocolateMessage = "초콜릿 드리즐 적게, "
+            }else if SharePersonal.chocoDrizzleState == 2 {
+                btnRegular2.layer.borderWidth = 1.5
+                btnRegular2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                chocoDrizzleCount = 2
+                chocolateMessage = "초콜릿 드리즐 보통, "
+            }else if SharePersonal.chocoDrizzleState == 3 {
+                btnBig2.layer.borderWidth = 1.5
+                btnBig2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                chocoDrizzleCount = 3
+                chocolateMessage = "초콜릿 드리즐 많이, "
+            }
 
             lblAddCount.isHidden = true
             btnMinus.isHidden = true
@@ -211,6 +339,11 @@ class PersonalOptionDetailViewController: UIViewController {
             lblCustomMessage.text = "컵&리드 옵션을 선택해 주세요!"
             lblOptionName.text = "기본 옵션"
             lblAddTitle.text = "리드"
+            if SharePersonal.lid != "" {
+                btnLid.layer.borderWidth = 1.5
+                btnLid.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnCount += 1
+            }
 
             lblAddCount.isHidden = true
             btnMinus.isHidden = true
@@ -253,12 +386,48 @@ class PersonalOptionDetailViewController: UIViewController {
     }
     
     @IBAction func btnAddOption1(_ sender: UIButton) {
+        print("btnAddOption1:", espressoCount)
         if espressoCount != 0 {
-            btnAddOption1.layer.borderWidth = 1.5
-            btnAddOption1.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
-            btnAddOption2.layer.borderWidth = 1
-            btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
-            espressoMessage = "디카페인 \(espressoCount)"
+            if SharePersonal.coffeeState == 0 {
+                if decaffeination == true {
+                    btnAddOption1.layer.borderWidth = 1
+                    btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnAddOption2.layer.borderWidth = 1
+                    btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                    espressoMessage = ""
+                    decaffeination = false
+                    coffeeStateCount = 0
+                    SharePersonal.coffeeState = coffeeStateCount
+                }else {
+                    btnAddOption1.layer.borderWidth = 1.5
+                    btnAddOption1.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnAddOption2.layer.borderWidth = 1
+                    decaffeination = true
+                    halfDecaffeination = false
+                    btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                    espressoMessage = "디카페인"
+                    coffeeStateCount = 1
+                    SharePersonal.coffeeState = coffeeStateCount
+                }
+            }else if SharePersonal.coffeeState == 1 {
+                btnAddOption1.layer.borderWidth = 1
+                btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                btnAddOption2.layer.borderWidth = 1
+                btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                espressoMessage = ""
+                coffeeStateCount = 0
+                SharePersonal.coffeeState = coffeeStateCount
+            }else {
+                btnAddOption1.layer.borderWidth = 1.5
+                btnAddOption1.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnAddOption2.layer.borderWidth = 1
+                decaffeination = true
+                halfDecaffeination = false
+                btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                espressoMessage = "디카페인"
+                coffeeStateCount = 1
+                SharePersonal.coffeeState = coffeeStateCount
+            }
         }else {
             let resultAlert = UIAlertController(title: "에스프레소 샷의 수량을 먼저 변경해주세요!", message: nil, preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in
@@ -270,12 +439,48 @@ class PersonalOptionDetailViewController: UIViewController {
     }
     
     @IBAction func btnAddOption2(_ sender: UIButton) {
+        print("btnAddOption2:", espressoCount)
         if espressoCount != 0 {
-            btnAddOption1.layer.borderWidth = 1
-            btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
-            btnAddOption2.layer.borderWidth = 1.5
-            btnAddOption2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
-            espressoMessage = "1/2 디카페인 \(espressoCount)"
+            if SharePersonal.coffeeState == 0 {
+                if halfDecaffeination == true {
+                    btnAddOption1.layer.borderWidth = 1
+                    btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnAddOption2.layer.borderWidth = 1
+                    btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                    halfDecaffeination = false
+                    espressoMessage = ""
+                    coffeeStateCount = 0
+                    SharePersonal.coffeeState = coffeeStateCount
+                }else {
+                    btnAddOption1.layer.borderWidth = 1
+                    btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnAddOption2.layer.borderWidth = 1.5
+                    btnAddOption2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    decaffeination = false
+                    halfDecaffeination = true
+                    espressoMessage = "1/2 디카페인"
+                    coffeeStateCount = 2
+                    SharePersonal.coffeeState = coffeeStateCount
+                }
+            }else if SharePersonal.coffeeState == 2 {
+                btnAddOption1.layer.borderWidth = 1
+                btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                btnAddOption2.layer.borderWidth = 1
+                btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                espressoMessage = ""
+                coffeeStateCount = 0
+                SharePersonal.coffeeState = coffeeStateCount
+            }else {
+                btnAddOption1.layer.borderWidth = 1
+                btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                btnAddOption2.layer.borderWidth = 1.5
+                btnAddOption2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                decaffeination = false
+                halfDecaffeination = true
+                espressoMessage = "1/2 디카페인"
+                coffeeStateCount = 2
+                SharePersonal.coffeeState = coffeeStateCount
+            }
         }else {
             let resultAlert = UIAlertController(title: "에스프레소 샷의 수량을 먼저 변경해주세요!", message: nil, preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in
@@ -292,6 +497,15 @@ class PersonalOptionDetailViewController: UIViewController {
             lblAddCount.text = String(espressoCount)
             if espressoCount == 0 {
                 btnMinus.isEnabled = false
+                btnAddOption1.layer.borderWidth = 1
+                btnAddOption1.layer.borderColor = UIColor.systemGray5.cgColor
+                btnAddOption2.layer.borderWidth = 1
+                btnAddOption2.layer.borderColor = UIColor.systemGray5.cgColor
+                espressoMessage = ""
+                coffeeStateCount = 0
+                SharePersonal.coffeeState = coffeeStateCount
+                decaffeination = false
+                halfDecaffeination = false
             }
         }else if receivedIndexPath == 2 {
             vanillaCount -= 1
@@ -343,48 +557,937 @@ class PersonalOptionDetailViewController: UIViewController {
     }
     
     @IBAction func btnNo(_ sender: UIButton) {
-        
+        if receivedIndexPath == 3 {
+            btnNo.layer.borderWidth = 1.5
+            btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            btnSmall.layer.borderWidth = 1
+            btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+            btnRegular.layer.borderWidth = 1
+            btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+            btnBig.layer.borderWidth = 1
+            btnBig.layer.borderColor = UIColor.systemGray5.cgColor
+            icedMessage = "얼음 없이, "
+        }else if receivedIndexPath == 4 {
+            if SharePersonal.whipState == 0 {
+                if normalWhipS == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipS = false
+                    whipMessage = ""
+                    whipCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1.5
+                    btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipS = true
+                    normalWhipR = false
+                    normalWhipB = false
+                    espressoWhipS = false
+                    espressoWhipR = false
+                    espressoWhipB = false
+                    whipMessage = "일반 휘핑 적게, "
+                    whipCount = 1
+                }
+            }else if SharePersonal.whipState == 1 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipS = false
+                whipMessage = ""
+                whipCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1.5
+                btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipS = true
+                normalWhipR = false
+                normalWhipB = false
+                espressoWhipS = false
+                espressoWhipR = false
+                espressoWhipB = false
+                whipMessage = "일반 휘핑 적게, "
+                whipCount = 1
+            }
+        }else if receivedIndexPath == 5 {
+            if SharePersonal.caramelDrizzleState == 0 {
+                if caramelS == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    caramelS = false
+                    caramelMessage = ""
+                    caramleDrizzleCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1.5
+                    btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    caramelS = true
+                    caramelR = false
+                    caramelB = false
+                    caramelMessage = "카라멜 드리즐 적게, "
+                    caramleDrizzleCount = 1
+                }
+            }else if SharePersonal.caramelDrizzleState == 1 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                caramelS = false
+                caramelMessage = ""
+                caramleDrizzleCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1.5
+                btnNo.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                caramelS = true
+                caramelR = false
+                caramelB = false
+                caramelMessage = "카라멜 드리즐 적게, "
+                caramleDrizzleCount = 1
+            }
+        }
     }
     
     @IBAction func btnSmall(_ sender: UIButton) {
+        if receivedIndexPath == 3 {
+            btnNo.layer.borderWidth = 1
+            btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+            btnSmall.layer.borderWidth = 1.5
+            btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            btnRegular.layer.borderWidth = 1
+            btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+            btnBig.layer.borderWidth = 1
+            btnBig.layer.borderColor = UIColor.systemGray5.cgColor
+            icedMessage = "얼음 적게, "
+        }else if receivedIndexPath == 4 {
+            if SharePersonal.whipState == 0 {
+                if normalWhipR == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipR = false
+                    whipMessage = ""
+                    whipCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1.5
+                    btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipS = false
+                    normalWhipR = true
+                    normalWhipB = false
+                    espressoWhipS = false
+                    espressoWhipR = false
+                    espressoWhipB = false
+                    whipMessage = "일반 휘핑 보통, "
+                    whipCount = 2
+                }
+            }else if SharePersonal.whipState == 2 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipR = false
+                whipMessage = ""
+                whipCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1.5
+                btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipS = false
+                normalWhipR = true
+                normalWhipB = false
+                espressoWhipS = false
+                espressoWhipR = false
+                espressoWhipB = false
+                whipMessage = "일반 휘핑 보통, "
+                whipCount = 2
+            }
+            
+        }else if receivedIndexPath == 5 {
+            if SharePersonal.caramelDrizzleState == 0 {
+                if caramelR == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    caramelR = false
+                    caramelMessage = ""
+                    caramleDrizzleCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1.5
+                    btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    caramelS = false
+                    caramelR = true
+                    caramelB = false
+                    caramelMessage = "카라멜 드리즐 보통, "
+                    caramleDrizzleCount = 2
+                }
+            }else if SharePersonal.caramelDrizzleState == 2 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                caramelR = false
+                caramelMessage = ""
+                caramleDrizzleCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1.5
+                btnSmall.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                caramelS = false
+                caramelR = true
+                caramelB = false
+                caramelMessage = "카라멜 드리즐 보통, "
+                caramleDrizzleCount = 2
+            }
+        }
     }
     
     @IBAction func btnRegular(_ sender: UIButton) {
+        if receivedIndexPath == 3 {
+            btnNo.layer.borderWidth = 1
+            btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+            btnSmall.layer.borderWidth = 1
+            btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+            btnRegular.layer.borderWidth = 1.5
+            btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            btnBig.layer.borderWidth = 1
+            btnBig.layer.borderColor = UIColor.systemGray5.cgColor
+            icedMessage = "얼음 보통, "
+        }else if receivedIndexPath == 4 {
+            if SharePersonal.whipState == 0 {
+                if normalWhipB == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipB = false
+                    whipMessage = ""
+                    whipCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1.5
+                    btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipS = false
+                    normalWhipR = false
+                    normalWhipB = true
+                    espressoWhipS = false
+                    espressoWhipR = false
+                    espressoWhipB = false
+                    whipMessage = "일반 휘핑 많이, "
+                    whipCount = 3
+                }
+            }else if SharePersonal.whipState == 3 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipB = false
+                whipMessage = ""
+                whipCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1.5
+                btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipS = false
+                normalWhipR = false
+                normalWhipB = true
+                espressoWhipS = false
+                espressoWhipR = false
+                espressoWhipB = false
+                whipMessage = "일반 휘핑 많이, "
+                whipCount = 3
+            }
+        }else if receivedIndexPath == 5 {
+            if SharePersonal.caramelDrizzleState == 0 {
+                if caramelB == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    caramelB = false
+                    caramelMessage = ""
+                    caramleDrizzleCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1.5
+                    btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    
+                    caramelS = false
+                    caramelR = false
+                    caramelB = true
+                    caramelMessage = "카라멜 드리즐 많이, "
+                    caramleDrizzleCount = 3
+                }
+            }else if SharePersonal.caramelDrizzleState == 3 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                caramelB = false
+                caramelMessage = ""
+                caramleDrizzleCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1.5
+                btnRegular.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                
+                caramelS = false
+                caramelR = false
+                caramelB = true
+                caramelMessage = "카라멜 드리즐 많이, "
+                caramleDrizzleCount = 3
+            }
+        }
     }
     
     @IBAction func btnBig(_ sender: UIButton) {
+        if receivedIndexPath == 3 {
+            btnNo.layer.borderWidth = 1
+            btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+            btnSmall.layer.borderWidth = 1
+            btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+            btnRegular.layer.borderWidth = 1
+            btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+            btnBig.layer.borderWidth = 1.5
+            btnBig.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+            icedMessage = "얼음 많이, "
+        }
     }
     
+    @IBAction func btnSmall2(_ sender: UIButton) {
+        if receivedIndexPath == 4 {
+            if SharePersonal.whipState == 0 {
+                if espressoWhipS == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    espressoWhipS = false
+                    whipCount = 0
+                    whipMessage = ""
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1.5
+                    btnSmall2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipS = false
+                    normalWhipR = false
+                    normalWhipB = false
+                    espressoWhipS = true
+                    espressoWhipR = false
+                    espressoWhipB = false
+                    whipMessage = "에스프레소 휘핑 적게, "
+                    whipCount = 4
+                }
+            }else if SharePersonal.whipState == 4 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                espressoWhipS = false
+                whipCount = 0
+                whipMessage = ""
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1.5
+                btnSmall2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipS = false
+                normalWhipR = false
+                normalWhipB = false
+                espressoWhipS = true
+                espressoWhipR = false
+                espressoWhipB = false
+                whipMessage = "에스프레소 휘핑 적게, "
+                whipCount = 4
+            }
+        }else if receivedIndexPath == 5 {
+            if SharePersonal.chocoDrizzleState == 0 {
+                if chocolateS == true {
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    chocolateS = false
+                    chocolateMessage = ""
+                    chocoDrizzleCount = 0
+                }else {
+                    btnSmall2.layer.borderWidth = 1.5
+                    btnSmall2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    chocolateS = true
+                    chocolateR = false
+                    chocolateB = false
+                    chocolateMessage = "초콜릿 드리즐 적게, "
+                    chocoDrizzleCount = 1
+                }
+            }else if SharePersonal.chocoDrizzleState == 1 {
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                chocolateS = false
+                chocolateMessage = ""
+                chocoDrizzleCount = 0
+            }else {
+                btnSmall2.layer.borderWidth = 1.5
+                btnSmall2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                chocolateS = true
+                chocolateR = false
+                chocolateB = false
+                chocolateMessage = "초콜릿 드리즐 적게, "
+                chocoDrizzleCount = 1
+            }
+        }
+    }
+    
+    @IBAction func btnRegular2(_ sender: UIButton) {
+        if receivedIndexPath == 4 {
+            if SharePersonal.whipState == 0 {
+                if espressoWhipR == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    espressoWhipR = false
+                    whipMessage = ""
+                    whipCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1.5
+                    btnRegular2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    normalWhipS = false
+                    normalWhipR = false
+                    normalWhipB = false
+                    espressoWhipS = false
+                    espressoWhipR = true
+                    espressoWhipB = false
+                    whipMessage = "에스프레소 휘핑 보통, "
+                    whipCount = 5
+                }
+            }else if SharePersonal.whipState == 5 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                espressoWhipR = false
+                whipMessage = ""
+                whipCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1.5
+                btnRegular2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                normalWhipS = false
+                normalWhipR = false
+                normalWhipB = false
+                espressoWhipS = false
+                espressoWhipR = true
+                espressoWhipB = false
+                whipMessage = "에스프레소 휘핑 보통, "
+                whipCount = 5
+            }
+        }else if receivedIndexPath == 5 {
+            if SharePersonal.chocoDrizzleState == 0 {
+                if chocolateR == true {
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    chocolateR = false
+                    chocolateMessage = ""
+                    chocoDrizzleCount = 0
+                }else {
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1.5
+                    btnRegular2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    chocolateS = false
+                    chocolateR = true
+                    chocolateB = false
+                    chocolateMessage = "초콜릿 드리즐 보통, "
+                    chocoDrizzleCount = 2
+                }
+            }else if SharePersonal.chocoDrizzleState == 2 {
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                chocolateR = false
+                chocolateMessage = ""
+                chocoDrizzleCount = 0
+            }else {
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1.5
+                btnRegular2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                chocolateS = false
+                chocolateR = true
+                chocolateB = false
+                chocolateMessage = "초콜릿 드리즐 보통, "
+                chocoDrizzleCount = 2
+            }
+        }
+    }
+    
+    @IBAction func btnBig2(_ sender: UIButton) {
+        if receivedIndexPath == 4 {
+            if SharePersonal.whipState == 0 {
+                if espressoWhipB == true {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    espressoWhipB = false
+                    whipMessage = ""
+                    whipCount = 0
+                }else {
+                    btnNo.layer.borderWidth = 1
+                    btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall.layer.borderWidth = 1
+                    btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular.layer.borderWidth = 1
+                    btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1.5
+                    btnBig2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    
+                    normalWhipS = false
+                    normalWhipR = false
+                    normalWhipB = false
+                    espressoWhipS = false
+                    espressoWhipR = false
+                    espressoWhipB = true
+                    whipMessage = "에스프레소 휘핑 많이, "
+                    whipCount = 6
+                }
+            }else if SharePersonal.whipState == 6 {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                espressoWhipB = false
+                whipMessage = ""
+                whipCount = 0
+            }else {
+                btnNo.layer.borderWidth = 1
+                btnNo.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall.layer.borderWidth = 1
+                btnSmall.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular.layer.borderWidth = 1
+                btnRegular.layer.borderColor = UIColor.systemGray5.cgColor
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1.5
+                btnBig2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                
+                normalWhipS = false
+                normalWhipR = false
+                normalWhipB = false
+                espressoWhipS = false
+                espressoWhipR = false
+                espressoWhipB = true
+                whipMessage = "에스프레소 휘핑 많이, "
+                whipCount = 6
+            }
+        }else if receivedIndexPath == 5 {
+            if SharePersonal.chocoDrizzleState == 0 {
+                if chocolateB == true {
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1
+                    btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                    
+                    chocolateB = false
+                    chocolateMessage = ""
+                    chocoDrizzleCount = 0
+                }else {
+                    btnSmall2.layer.borderWidth = 1
+                    btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnRegular2.layer.borderWidth = 1
+                    btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                    btnBig2.layer.borderWidth = 1.5
+                    btnBig2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                    
+                    chocolateS = false
+                    chocolateR = false
+                    chocolateB = true
+                    chocolateMessage = "초콜릿 드리즐 많이, "
+                    chocoDrizzleCount = 3
+                }
+            }else if SharePersonal.chocoDrizzleState == 1 {
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1
+                btnBig2.layer.borderColor = UIColor.systemGray5.cgColor
+                
+                chocolateB = false
+                chocolateMessage = ""
+                chocoDrizzleCount = 0
+            }else {
+                btnSmall2.layer.borderWidth = 1
+                btnSmall2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnRegular2.layer.borderWidth = 1
+                btnRegular2.layer.borderColor = UIColor.systemGray5.cgColor
+                btnBig2.layer.borderWidth = 1.5
+                btnBig2.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
+                
+                chocolateS = false
+                chocolateR = false
+                chocolateB = true
+                chocolateMessage = "초콜릿 드리즐 많이, "
+                chocoDrizzleCount = 3
+            }
+        }
+
+    }
     
     
     @IBAction func btnPersonal(_ sender: UIButton) {
         if receivedIndexPath == 1 {
             if espressoCount != 0 {
                 if espressoMessage == "" {
-                    SharePersonal.coffee = "에스프레소 샷 \(espressoCount)"
+                    SharePersonal.coffee = "에스프레소 샷 \(espressoCount), "
+                    SharePersonal.coffeeCount = espressoCount
+                    SharePersonal.coffeePrice = (600 * espressoCount)
                 }else {
-                    SharePersonal.coffee = espressoMessage
+                    SharePersonal.coffeeCount = espressoCount
+                    SharePersonal.coffee = "\(espressoMessage) \(espressoCount), "
+                    print(SharePersonal.coffee)
+                    SharePersonal.coffeePrice = (600 * espressoCount) + 300
                 }
             }
         }else if receivedIndexPath == 2 {
             if (vanillaCount != 0) {
-                SharePersonal.syrup += "바닐라 시럽 \(vanillaCount)"
-            }else if (hazelnutCount != 0) {
-                SharePersonal.syrup += "헤이즐넛 시럽 \(hazelnutCount)"
-            }else if (caramelCount != 0) {
-                SharePersonal.syrup += "카라멜 시럽 \(caramelCount)"
+                SharePersonal.vSyrup = "바닐라 시럽 \(vanillaCount), "
+                SharePersonal.vSyrupCount = vanillaCount
+                SharePersonal.vSyrupPrice = 600
+            }
+            if (hazelnutCount != 0) {
+                SharePersonal.hSyrup = "헤이즐넛 시럽 \(hazelnutCount), "
+                SharePersonal.hSyrupCount = hazelnutCount
+                SharePersonal.hSyrupPrice = 600
+            }
+            if (caramelCount != 0) {
+                SharePersonal.cSyrup = "카라멜 시럽 \(caramelCount), "
+                SharePersonal.cSyrupCount = caramelCount
+                SharePersonal.cSyrupPrice = 600
             }
         }else if receivedIndexPath == 3 {
-            
+            SharePersonal.ice = icedMessage
         }else if receivedIndexPath == 4 {
-            
+            SharePersonal.whip = whipMessage
+            SharePersonal.whipState = whipCount
+            if whipMessage != "" {
+                SharePersonal.whipPrice = 600
+            }
         }else if receivedIndexPath == 5 {
-            
+            SharePersonal.caramelDrizzle = caramelMessage
+            SharePersonal.chocoDrizzle = chocolateMessage
+            SharePersonal.caramelDrizzleState = caramleDrizzleCount
+            SharePersonal.chocoDrizzleState = chocoDrizzleCount
+            if caramleDrizzleCount != 0 {
+                SharePersonal.carameldrizzlePrice = 600
+            }
+            if chocoDrizzleCount != 0 {
+                SharePersonal.chocolatedrizzlePrice = 600
+            }
         }else {
             if btnCount % 2 != 0 {
-                SharePersonal.lid = "돔 리드로 변경"
+                SharePersonal.lid = "돔 리드로 변경, "
+            }else {
+                SharePersonal.lid = ""
             }
         }
+        NotificationCenter.default.post(name: DidDismissPersonalOptionViewController, object: nil, userInfo: nil)
         dismiss(animated: true, completion: nil)
     }
     

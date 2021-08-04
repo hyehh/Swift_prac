@@ -24,7 +24,8 @@ class MyMenuViewController: UIViewController {
         tvMyMenu.dataSource = self
         tvMyMenu.delegate = self
         self.tvMyMenu.separatorStyle = .none
-
+        navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     @IBAction func btnDelete(_ sender: UIButton) {

@@ -25,7 +25,8 @@ class AllMenuViewController: UIViewController {
         self.tvAllMenu.separatorStyle = .none
         
         serverImageDownloaded()
-        
+        navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func serverImageDownloaded() {

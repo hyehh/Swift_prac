@@ -9,6 +9,7 @@ import UIKit
 import MaterialComponents.MaterialBottomSheet
 
 let personalList = ["", "커피", "시럽", "얼음", "휘핑크림", "드리즐", "컵&리드 옵션"]
+let DidDismissPersonalOptionViewController: Notification.Name = Notification.Name("DidDismissPersonalOptionViewController")
 
 class PersonalOptionViewController: UIViewController {
 
@@ -24,14 +25,12 @@ class PersonalOptionViewController: UIViewController {
     @IBOutlet weak var btnOrderShape: UIButton!
     
     var personalOptionName = ""
-    var personalOptionPrice = 0
-    var personalOptionChangedPrice = 0
-    var personalOptionCount = 0
     var myMenuState = true
     var pId = ""
     var cd = ""
     var dataItem: NSArray = NSArray()
     var idItem: NSMutableArray = NSMutableArray()
+    var personalTotalPrice = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +40,23 @@ class PersonalOptionViewController: UIViewController {
         
         self.tvPersonalOption.dataSource = self
         self.tvPersonalOption.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPersonalOptionNotification(_:)), name: DidDismissPersonalOptionViewController, object: nil)
+    }
+    
+    @objc func didDismissPersonalOptionNotification(_ noti: Notification) {
+        OperationQueue.main.addOperation {
+            self.tvPersonalOption.reloadData()
+            self.personalTotalPrice = SharePersonal.coffeePrice + SharePersonal.vSyrupPrice + SharePersonal.hSyrupPrice + SharePersonal.cSyrupPrice + SharePersonal.whipPrice + SharePersonal.carameldrizzlePrice + SharePersonal.chocolatedrizzlePrice
+            SharePersonalData.personalOptionPrice = self.personalTotalPrice
+            self.lblPersonalOptionPrice.text = self.DecimalWon(value: SharePersonalData.pChangedPrice+(self.personalTotalPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        }
     }
     
     func initSetting() {
         lblPersonalOptionName.text = personalOptionName
-        lblPersonalOptionPrice.text = DecimalWon(value: personalOptionChangedPrice)
-        lblPersonalOptionCount.text = String(personalOptionCount)
+        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        lblPersonalOptionCount.text = String(SharePersonalData.drinkCount+(personalTotalPrice*SharePersonalData.drinkCount))
         
         if cupSize == "Tall" {
             lblPersonalOptionSelected.text = "\(cupSize) (355ml) | \(cupType)"
@@ -56,9 +66,7 @@ class PersonalOptionViewController: UIViewController {
             lblPersonalOptionSelected.text = "\(cupSize) (591ml) | \(cupType)"
         }
         
-        if personalOptionCount == 1 {
-            btnMinus.isEnabled = false
-        }
+        btnMinus.isEnabled = SharePersonalData.btnBool
         
         btnCartShape.layer.borderWidth = 1
         btnCartShape.layer.borderColor = UIColor(displayP3Red: 0/255, green: 112/225, blue: 74/255, alpha: 1).cgColor
@@ -75,11 +83,8 @@ class PersonalOptionViewController: UIViewController {
         }
     }
     
-    func receivedData(_ receivedName: String, _ receivedPrice: Int, _ receivedChangedPrice: Int, _ receivedCount: Int, _ receivedState: Bool, _ receivedCd: String, _ receivedPId: String) {
+    func receivedData(_ receivedName: String, _ receivedState: Bool, _ receivedCd: String, _ receivedPId: String) {
         personalOptionName = receivedName
-        personalOptionPrice = receivedPrice
-        personalOptionChangedPrice = receivedChangedPrice
-        personalOptionCount = receivedCount
         myMenuState = receivedState
         cd = receivedCd
         pId = receivedPId
@@ -94,22 +99,24 @@ class PersonalOptionViewController: UIViewController {
     }
 
     @IBAction func btnMinus(_ sender: UIButton) {
-        personalOptionCount -= 1
-        lblPersonalOptionCount.text = String(personalOptionCount)
-        personalOptionChangedPrice = personalOptionPrice * personalOptionCount
-        lblPersonalOptionPrice.text = DecimalWon(value: personalOptionChangedPrice)
-        if personalOptionCount == 1 {
+        SharePersonalData.drinkCount -= 1
+        lblPersonalOptionCount.text = String(SharePersonalData.drinkCount)
+        SharePersonalData.pChangedPrice = SharePersonalData.pPrice * SharePersonalData.drinkCount
+        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(personalTotalPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        if SharePersonalData.drinkCount == 1 {
             btnMinus.isEnabled = false
+            SharePersonalData.btnBool = false
         }
     }
     
     
     @IBAction func btnPlus(_ sender: UIButton) {
-        personalOptionCount += 1
-        lblPersonalOptionCount.text = String(personalOptionCount)
-        personalOptionChangedPrice = personalOptionPrice * personalOptionCount
-        lblPersonalOptionPrice.text = DecimalWon(value: personalOptionChangedPrice)
+        SharePersonalData.drinkCount += 1
+        lblPersonalOptionCount.text = String(SharePersonalData.drinkCount)
+        SharePersonalData.pChangedPrice = SharePersonalData.pPrice * SharePersonalData.drinkCount
+        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(personalTotalPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
         btnMinus.isEnabled = true
+        SharePersonalData.btnBool = true
     }
     
     @IBAction func btnMyMenuSelect(_ sender: UIButton) { // 체크 해제
@@ -170,10 +177,6 @@ class PersonalOptionViewController: UIViewController {
         
     }
     
-    @IBAction func btnPersonalDetail(_ sender: UIButton) {
-
-    }
-    
     
     // MARK: - Navigation
 
@@ -211,11 +214,68 @@ extension PersonalOptionViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "personalContentCell") as! PersonalOptionContentTableViewCell
             cell.selectionStyle = .none
             cell.lblPersonalOptionList.text = personalList[indexPath.row]
-            cell.lblPersonalOptionContent.text = ""
-            cell.lblPersonalOptionPrice.text = ""
+            if indexPath.row == 1 {
+                var coffeePrice = 0
+                cell.lblPersonalOptionContent.text = SharePersonal.coffee.components(separatedBy: ",")[0]
+                if SharePersonal.coffeeCount == 0 {
+                    cell.lblPersonalOptionPrice.text = ""
+                }else {
+                    if SharePersonal.coffeeState == 0 {
+                        coffeePrice = (600 * SharePersonal.coffeeCount)
+                    }else {
+                        coffeePrice = (600 * SharePersonal.coffeeCount) + 300
+                    }
+                    cell.lblPersonalOptionPrice.text = "\(coffeePrice) 원"
+                }
+            }else if indexPath.row == 2 {
+                cell.lblPersonalOptionContent.text = "\(SharePersonal.vSyrup.components(separatedBy: ",")[0]) \(SharePersonal.hSyrup.components(separatedBy: ",")[0]) \(SharePersonal.cSyrup.components(separatedBy: ",")[0])"
+                if SharePersonal.cSyrupCount == 0 && SharePersonal.hSyrupCount == 0 && SharePersonal.vSyrupCount == 0 {
+                    cell.lblPersonalOptionPrice.text = ""
+                }else {
+                    var syrupPrice = 0
+                    if SharePersonal.cSyrupCount != 0 {
+                        syrupPrice += 600
+                    }
+                    if SharePersonal.hSyrupCount != 0 {
+                        syrupPrice += 600
+                    }
+                    if SharePersonal.vSyrupCount != 0 {
+                        syrupPrice += 600
+                    }
+                    cell.lblPersonalOptionPrice.text = "\(syrupPrice) 원"
+                }
+            }else if indexPath.row == 3 {
+                cell.lblPersonalOptionContent.text = SharePersonal.ice.components(separatedBy: ",")[0]
+                cell.lblPersonalOptionPrice.text = ""
+            }else if indexPath.row == 4 {
+                var whipPrice = 0
+                cell.lblPersonalOptionContent.text = SharePersonal.whip.components(separatedBy: ",")[0]
+                if SharePersonal.whipState != 0 {
+                    whipPrice = 600
+                    cell.lblPersonalOptionPrice.text = "\(whipPrice) 원"
+                }else {
+                    cell.lblPersonalOptionPrice.text = ""
+                }
+            }else if indexPath.row == 5 {
+                cell.lblPersonalOptionContent.text = "\(SharePersonal.caramelDrizzle.components(separatedBy: ",")[0]) \(SharePersonal.chocoDrizzle.components(separatedBy: ",")[0])"
+                if SharePersonal.caramelDrizzleState == 0 && SharePersonal.chocoDrizzleState == 0 {
+                    cell.lblPersonalOptionPrice.text = ""
+                }else {
+                    var drizzlePrice = 0
+                    if SharePersonal.caramelDrizzleState != 0 {
+                        drizzlePrice += 600
+                    }
+                    if SharePersonal.chocoDrizzleState != 0 {
+                        drizzlePrice += 600
+                    }
+                    cell.lblPersonalOptionPrice.text = "\(drizzlePrice) 원"
+                }
+            }else if indexPath.row == 6 {
+                cell.lblPersonalOptionContent.text = SharePersonal.lid.components(separatedBy: ",")[0]
+                cell.lblPersonalOptionPrice.text = ""
+            }
             return cell
         }
-        
     }
     
     

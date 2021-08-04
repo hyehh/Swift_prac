@@ -12,6 +12,5 @@ class PersonalOptionContentTableViewCell: UITableViewCell {
     @IBOutlet weak var lblPersonalOptionList: UILabel!
     @IBOutlet weak var lblPersonalOptionContent: UILabel!
     @IBOutlet weak var lblPersonalOptionPrice: UILabel!
-    @IBOutlet weak var btnPersonalOptionDetail: UIButton!
     
 }
