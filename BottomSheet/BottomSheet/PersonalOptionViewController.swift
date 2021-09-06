@@ -102,7 +102,7 @@ class PersonalOptionViewController: UIViewController {
         SharePersonalData.drinkCount -= 1
         lblPersonalOptionCount.text = String(SharePersonalData.drinkCount)
         SharePersonalData.pChangedPrice = SharePersonalData.pPrice * SharePersonalData.drinkCount
-        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(personalTotalPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
         if SharePersonalData.drinkCount == 1 {
             btnMinus.isEnabled = false
             SharePersonalData.btnBool = false
@@ -114,7 +114,7 @@ class PersonalOptionViewController: UIViewController {
         SharePersonalData.drinkCount += 1
         lblPersonalOptionCount.text = String(SharePersonalData.drinkCount)
         SharePersonalData.pChangedPrice = SharePersonalData.pPrice * SharePersonalData.drinkCount
-        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(personalTotalPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
+        lblPersonalOptionPrice.text = DecimalWon(value: SharePersonalData.pChangedPrice+(SharePersonalData.personalOptionPrice*SharePersonalData.drinkCount)+(SharePersonalData.size*SharePersonalData.drinkCount))
         btnMinus.isEnabled = true
         SharePersonalData.btnBool = true
     }

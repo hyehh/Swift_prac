@@ -12,11 +12,13 @@ class PersonalOptionDetailViewController: UIViewController {
     @IBOutlet weak var lblPersonalName: UILabel!
     @IBOutlet weak var lblOptionName: UILabel!
     @IBOutlet weak var btnPersonalShape: UIButton!
+    
     @IBOutlet weak var lblCustomMessage: UILabel!
     @IBOutlet weak var lblAddTitle: UILabel!
     @IBOutlet weak var lblAddCount: UILabel!
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var btnPlus: UIButton!
+    
     @IBOutlet weak var btnAddOption1: UIButton!
     @IBOutlet weak var btnAddOption2: UIButton!
     @IBOutlet weak var lblAddTitle2: UILabel!
