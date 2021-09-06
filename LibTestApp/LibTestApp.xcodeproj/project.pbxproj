@@ -7,102 +7,107 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8510A96A26E65B26002E790A /* LibTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510A96926E65B26002E790A /* LibTest.swift */; };
-		8510A97326E65C58002E790A /* testFunc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8510A97226E65C58002E790A /* testFunc.c */; };
+		8510A98126E65D52002E790A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510A98026E65D52002E790A /* AppDelegate.swift */; };
+		8510A98326E65D52002E790A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510A98226E65D52002E790A /* SceneDelegate.swift */; };
+		8510A98526E65D52002E790A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510A98426E65D52002E790A /* ViewController.swift */; };
+		8510A98826E65D52002E790A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8510A98626E65D52002E790A /* Main.storyboard */; };
+		8510A98A26E65D55002E790A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8510A98926E65D55002E790A /* Assets.xcassets */; };
+		8510A98D26E65D55002E790A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8510A98B26E65D55002E790A /* LaunchScreen.storyboard */; };
+		8510A99626E65EC2002E790A /* libLibTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8510A99526E65EC2002E790A /* libLibTest.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		8510A96426E65B26002E790A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		8510A96626E65B26002E790A /* libLibTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLibTest.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8510A96926E65B26002E790A /* LibTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibTest.swift; sourceTree = "<group>"; };
-		8510A97126E65C58002E790A /* testFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testFunc.h; sourceTree = "<group>"; };
-		8510A97226E65C58002E790A /* testFunc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = testFunc.c; sourceTree = "<group>"; };
+		8510A97D26E65D52002E790A /* LibTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8510A98026E65D52002E790A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8510A98226E65D52002E790A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8510A98426E65D52002E790A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8510A98726E65D52002E790A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8510A98926E65D55002E790A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8510A98C26E65D55002E790A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8510A98E26E65D55002E790A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8510A99426E65E8D002E790A /* testFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testFunc.h; sourceTree = "<group>"; };
+		8510A99526E65EC2002E790A /* libLibTest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLibTest.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8510A96326E65B26002E790A /* Frameworks */ = {
+		8510A97A26E65D52002E790A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8510A99626E65EC2002E790A /* libLibTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8510A95D26E65B26002E790A = {
+		8510A97426E65D52002E790A = {
 			isa = PBXGroup;
 			children = (
-				8510A96826E65B26002E790A /* LibTest */,
-				8510A96726E65B26002E790A /* Products */,
+				8510A97F26E65D52002E790A /* LibTestApp */,
+				8510A97E26E65D52002E790A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8510A96726E65B26002E790A /* Products */ = {
+		8510A97E26E65D52002E790A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8510A96626E65B26002E790A /* libLibTest.a */,
+				8510A97D26E65D52002E790A /* LibTestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8510A96826E65B26002E790A /* LibTest */ = {
+		8510A97F26E65D52002E790A /* LibTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				8510A96926E65B26002E790A /* LibTest.swift */,
-				8510A97126E65C58002E790A /* testFunc.h */,
-				8510A97226E65C58002E790A /* testFunc.c */,
+				8510A99526E65EC2002E790A /* libLibTest.a */,
+				8510A99426E65E8D002E790A /* testFunc.h */,
+				8510A98026E65D52002E790A /* AppDelegate.swift */,
+				8510A98226E65D52002E790A /* SceneDelegate.swift */,
+				8510A98426E65D52002E790A /* ViewController.swift */,
+				8510A98626E65D52002E790A /* Main.storyboard */,
+				8510A98926E65D55002E790A /* Assets.xcassets */,
+				8510A98B26E65D55002E790A /* LaunchScreen.storyboard */,
+				8510A98E26E65D55002E790A /* Info.plist */,
 			);
-			path = LibTest;
+			path = LibTestApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8510A96526E65B26002E790A /* LibTest */ = {
+		8510A97C26E65D52002E790A /* LibTestApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8510A96D26E65B26002E790A /* Build configuration list for PBXNativeTarget "LibTest" */;
+			buildConfigurationList = 8510A99126E65D55002E790A /* Build configuration list for PBXNativeTarget "LibTestApp" */;
 			buildPhases = (
-				8510A96226E65B26002E790A /* Sources */,
-				8510A96326E65B26002E790A /* Frameworks */,
-				8510A96426E65B26002E790A /* CopyFiles */,
+				8510A97926E65D52002E790A /* Sources */,
+				8510A97A26E65D52002E790A /* Frameworks */,
+				8510A97B26E65D52002E790A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = LibTest;
-			productName = LibTest;
-			productReference = 8510A96626E65B26002E790A /* libLibTest.a */;
-			productType = "com.apple.product-type.library.static";
+			name = LibTestApp;
+			productName = LibTestApp;
+			productReference = 8510A97D26E65D52002E790A /* LibTestApp.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8510A95E26E65B26002E790A /* Project object */ = {
+		8510A97526E65D52002E790A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					8510A96526E65B26002E790A = {
+					8510A97C26E65D52002E790A = {
 						CreatedOnToolsVersion = 12.5.1;
-						LastSwiftMigration = 1250;
 					};
 				};
 			};
-			buildConfigurationList = 8510A96126E65B26002E790A /* Build configuration list for PBXProject "LibTest" */;
+			buildConfigurationList = 8510A97826E65D52002E790A /* Build configuration list for PBXProject "LibTestApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,30 +115,63 @@
 				en,
 				Base,
 			);
-			mainGroup = 8510A95D26E65B26002E790A;
-			productRefGroup = 8510A96726E65B26002E790A /* Products */;
+			mainGroup = 8510A97426E65D52002E790A;
+			productRefGroup = 8510A97E26E65D52002E790A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8510A96526E65B26002E790A /* LibTest */,
+				8510A97C26E65D52002E790A /* LibTestApp */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		8510A97B26E65D52002E790A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8510A98D26E65D55002E790A /* LaunchScreen.storyboard in Resources */,
+				8510A98A26E65D55002E790A /* Assets.xcassets in Resources */,
+				8510A98826E65D52002E790A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		8510A96226E65B26002E790A /* Sources */ = {
+		8510A97926E65D52002E790A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8510A96A26E65B26002E790A /* LibTest.swift in Sources */,
-				8510A97326E65C58002E790A /* testFunc.c in Sources */,
+				8510A98526E65D52002E790A /* ViewController.swift in Sources */,
+				8510A98126E65D52002E790A /* AppDelegate.swift in Sources */,
+				8510A98326E65D52002E790A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		8510A98626E65D52002E790A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8510A98726E65D52002E790A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8510A98B26E65D55002E790A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8510A98C26E65D55002E790A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		8510A96B26E65B26002E790A /* Debug */ = {
+		8510A98F26E65D55002E790A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -194,7 +232,7 @@
 			};
 			name = Debug;
 		};
-		8510A96C26E65B26002E790A /* Release */ = {
+		8510A99026E65D55002E790A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,44 +287,49 @@
 			};
 			name = Release;
 		};
-		8510A96E26E65B26002E790A /* Debug */ = {
+		8510A99226E65D55002E790A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 555WD7N8WG;
+				INFOPLIST_FILE = LibTestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LibTestApp",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyeji.LibTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LibTest/LibTest-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		8510A96F26E65B26002E790A /* Release */ = {
+		8510A99326E65D55002E790A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 555WD7N8WG;
+				INFOPLIST_FILE = LibTestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LibTestApp",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyeji.LibTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LibTest/LibTest-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -295,25 +338,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8510A96126E65B26002E790A /* Build configuration list for PBXProject "LibTest" */ = {
+		8510A97826E65D52002E790A /* Build configuration list for PBXProject "LibTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8510A96B26E65B26002E790A /* Debug */,
-				8510A96C26E65B26002E790A /* Release */,
+				8510A98F26E65D55002E790A /* Debug */,
+				8510A99026E65D55002E790A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8510A96D26E65B26002E790A /* Build configuration list for PBXNativeTarget "LibTest" */ = {
+		8510A99126E65D55002E790A /* Build configuration list for PBXNativeTarget "LibTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8510A96E26E65B26002E790A /* Debug */,
-				8510A96F26E65B26002E790A /* Release */,
+				8510A99226E65D55002E790A /* Debug */,
+				8510A99326E65D55002E790A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8510A95E26E65B26002E790A /* Project object */;
+	rootObject = 8510A97526E65D52002E790A /* Project object */;
 }
