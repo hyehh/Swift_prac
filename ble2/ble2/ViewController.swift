@@ -27,7 +27,11 @@ class ViewController: UIViewController {
         centralManager = CBCentralManager(delegate: self, queue: .main)
     }
 
-
+    @IBAction func btnCancelClick(_ sender: Any) {
+        // 연결 끊기
+        // centralManager.cancelPeripheralConnection(peripheral)
+    }
+    
     @IBAction func btnScanClick(_ sender: Any) {
         print("scan start!")
         
