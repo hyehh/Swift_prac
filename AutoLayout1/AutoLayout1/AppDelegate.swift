@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AutoLayout2
+//  AutoLayout1
 //
 //  Created by 박성훈 on 2021/09/22.
 //
