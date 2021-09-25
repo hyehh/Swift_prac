@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string></string>
+	<string>블루투스 이용에 동의하십니까? (ios12 이하)</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string></string>
+	<string>블루투스 이용에 동의하십니까? (ios13 이상)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnOfScan: UIButton!
     
     var peripherals: [CBPeripheral] = []
-    var centralManager: CBCentralManager!
+    var centralManager: CBCentralManager! // 블루투스 기능 관리
+    var aduinoPeripheral: CBPeripheral!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
         self.tblOfList.delegate = self
         self.tblOfList.dataSource = self
         centralManager = CBCentralManager(delegate: self, queue: .main)
+        // centralManager = CBCentralManager(delegate: self, queue: nil)
     }
 
     @IBAction func btnCancelClick(_ sender: Any) {
@@ -90,6 +92,13 @@ extension ViewController : CBPeripheralDelegate, CBCentralManagerDelegate {
                 print("여기 들어와라 제바라ㅏㅏㅏㅏ랄")
                 centralManager.connect(peripheral)
             }
+            
+//            if peripheral.identifier.uuidString == "DB469E0F-2CDE-D87B-BD7E-6D4191D6A646" {
+//                self.aduinoPeripheral = peripheral
+//                // aduinoPeripheral.delegate = self
+//                centralManager.stopScan()
+//                centralManager.connect(aduinoPeripheral)
+//            }
         }
     }
     
@@ -115,10 +124,37 @@ extension ViewController : CBPeripheralDelegate, CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("여기 들어오냐?")
         print("Connected to "+peripheral.name!)
+        
+        // 아래 파라미터가 nil이면 모든 서비스를 검색
+        aduinoPeripheral.discoverServices(nil)
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print(error!)
     }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        guard let services = aduinoPeripheral.services else {return}
+        for service in services {
+            print(service)
+            peripheral.discoverCharacteristics(nil, for: service)
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+            guard let characteristics = service.characteristics else {return}
+            for characteristic in characteristics {
+                print("characteristic: \(characteristic)")
+                if characteristic.properties.contains(.read) {
+                    print("readable")
+                    peripheral.readValue(for: characteristic)
+                }
+            }
+        }
+
+        func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+            print("didUpdateValueFor characteristic")
+            print(characteristic.value ?? "can't get value")
+        }
 }
 
