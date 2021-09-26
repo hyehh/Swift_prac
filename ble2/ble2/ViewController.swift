@@ -127,6 +127,11 @@ extension ViewController : CBPeripheralDelegate, CBCentralManagerDelegate {
         
         // 아래 파라미터가 nil이면 모든 서비스를 검색
         aduinoPeripheral.discoverServices(nil)
+        
+//        // The UUIDs for the services that contain the required characteristics
+//        let serviceUUIDs: [CBUUID] = [batteryServiceUUID, ...]
+//        // Discover these services
+//        peripheral.discoverServices(serviceUUIDs)
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -139,6 +144,12 @@ extension ViewController : CBPeripheralDelegate, CBCentralManagerDelegate {
             print(service)
             peripheral.discoverCharacteristics(nil, for: service)
         }
+        
+//        for service in services {
+//            let uuids = requiredCharacteristicUUIDs(for: service)
+//            peripheral.discoverCharacteristics(uuids, for: service)
+//        }
+        
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
