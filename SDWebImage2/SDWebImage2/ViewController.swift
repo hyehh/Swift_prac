@@ -17,7 +17,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.imgView.sd_setImage(with: URL(string: "http://issue3.gmoneytrans.net//Product/1.PNG"))
+        let url = "http://"
+        print(url.trimmingCharacters(in: .whitespacesAndNewlines))
+        
+        self.imgView.sd_setImage(with: URL(string: url.trimmingCharacters(in: .whitespacesAndNewlines)))
         
         print("여기 등장하니?")
     }
