@@ -5,6 +5,7 @@
 //  Created by HYEJI on 2021/09/30.
 //
 
+// 2021.09.30 Xml Parsing 시도한 방법 1
 import UIKit
 
 class ViewController: UIViewController,XMLParserDelegate {

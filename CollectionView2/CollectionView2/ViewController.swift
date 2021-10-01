@@ -5,6 +5,7 @@
 //  Created by HYEJI on 2021/09/29.
 //
 
+// 2021.09.29 CollectView 연습하기
 import UIKit
 
 class ViewController: UIViewController {

@@ -5,6 +5,7 @@
 //  Created by HYEJI on 2021/09/29.
 //
 
+// 2021.09.29 SDWebImage 사용법 공부하기
 import UIKit
 
 var list = ["flower_01", "flower_02", "flower_03", "flower_04", "flower_05", "flower_06"]

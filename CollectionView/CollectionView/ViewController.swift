@@ -5,11 +5,15 @@
 //  Created by HYEJI on 2021/09/29.
 //
 
+// 2021.09.29 CollectView 연습하기
+// 2021.09.30 N438 비슷하게 만들어보기
 import UIKit
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
+    @IBOutlet weak var btnTU: UIButton!
+    @IBOutlet weak var btnTD: UIButton!
     
     fileprivate let systemImageNameArray = [
             "moon", "zzz", "sparkles", "cloud", "tornado", "smoke.fill", "tv.fill", "gamecontroller", "headphones", "flame", "bolt.fill", "hare", "tortoise", "moon", "zzz", "sparkles", "cloud", "tornado", "smoke.fill", "tv.fill", "gamecontroller", "headphones", "flame", "bolt.fill", "hare", "tortoise", "ant", "hare", "car", "airplane", "heart", "bandage", "waveform.path.ecg", "staroflife", "bed.double.fill", "signature", "bag", "cart", "creditcard", "clock", "alarm", "stopwatch.fill", "timer"
@@ -18,6 +22,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        initButtonSetting()
+        
+        initDataSetting()
         
         // 컬렉션 뷰에 대한 설정
         myCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -35,7 +43,54 @@ class ViewController: UIViewController {
          self.myCollectionView.collectionViewLayout = createCompositionalLayout()
     }
 
+    func initButtonSetting() {
+        
+        btnTU.layer.cornerRadius = 8
+        btnTD.layer.cornerRadius = 8
+        
+    }
+    
+    func initDataSetting() {
+        
+//        //[…… setting up SOAP Message here …..]
+//
+//        //Better use `URLRequest` than `NSMutableURLRequest`
+//        var theRequest = URLRequest(url: soapURL)
+//        //Use `utf8.count`, `characters.count` is not suitable for `Content-Length`...
+//        //let msgLength = soapMessage.utf8.count
+//        theRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+//        theRequest.addValue("text/xml", forHTTPHeaderField: "Content-Type")
+//        theRequest.addValue("\"", forHTTPHeaderField: "SOAPAction")
+//        //When you set `httpBody` of a `URLRequest` with `Data`, `Content-Length` is automatically set.
+//        //theRequest.addValue(String(msgLength), forHTTPHeaderField: "Content-Length")
+//        theRequest.httpMethod = "POST"
+//        theRequest.httpBody = soapMessage.data(using: .utf8)
+//
+//        let session = URLSession.shared
+//
+//        let task = session.dataTask(with: theRequest, completionHandler: { (data, response, error) in
+//            //Use conditional binding where you can
+//            guard error == nil, let data = data else {
+//                print("Connection error or data is nil !")
+//                return
+//            }
+//            //Use `String`
+//            let dataString = String(data: data, encoding: .utf8)
+//            print(dataString ?? "Bad Encoding")
+//
+//            //Do parsing here...
+//            let XMLparser = XMLParser(data: data)
+//            XMLparser.delegate = self
+//            XMLparser.parse()
+//            XMLparser.shouldResolveExternalEntities = true
+//        })
+//
+//        task.resume()
+        
+    }
+    
 }
+
 
 // MARK: - 컬렉션뷰 컴포지셔널 레이아웃 관련
 extension ViewController {
@@ -56,9 +111,9 @@ extension ViewController {
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             
             // 아이템 간의 간격 설정
-            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
             
-            let groupHeight = NSCollectionLayoutDimension.fractionalWidth(1/2)
+            let groupHeight = NSCollectionLayoutDimension.fractionalWidth(0.7)
             
             // 그룹사이즈
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: groupHeight)
@@ -75,7 +130,7 @@ extension ViewController {
             // section.orthogonalScrollingBehavior = .groupPaging
             
             // 섹션에 대한 간격 설정
-            section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
             
             return section
         }

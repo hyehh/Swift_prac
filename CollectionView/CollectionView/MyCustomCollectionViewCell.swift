@@ -6,28 +6,29 @@
 //
 
 import UIKit
-import Foundation
 
 class MyCustomCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var profileImg: UIImageView!
-    @IBOutlet weak var profileLabel: UILabel!
+    @IBOutlet weak var ImgView: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
     
     var imageName : String = "" {
         didSet {
             print("MyCustomCollectionViewCell / imageName - didSet() : \(imageName)")
-            self.profileImg.image = UIImage(systemName: imageName)
-            self.profileLabel.text = imageName
+            self.ImgView.image = UIImage(systemName: imageName)
+            self.lblName.text = imageName
+            self.lblPrice.text = "10,000 Point"
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         print("MyCustomCollectionViewCell - awakeFromNib() called")
-        self.contentView.backgroundColor = .systemYellow
-        self.contentView.layer.cornerRadius = 8
-        self.contentView.layer.borderWidth = 1
-        // self.contentView.layer.borderColor = .systemBlue
+        // self.contentView.backgroundColor = .systemYellow
+        // self.contentView.layer.cornerRadius = 8
+        self.contentView.layer.borderWidth = 0.5
+        self.contentView.layer.borderColor = CGColor(red: 123/225, green: 123/225, blue: 123/225, alpha: 1)
     }
     
 }
