@@ -120,6 +120,7 @@ class TableViewController: UITableViewController, XMLParserDelegate {
 
     // 2
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        print(elementName, "안녕~~~")
         if elementName == "book" {
             let book = Book(bookTitle: bookTitle, bookAuthor: bookAuthor)
             books.append(book)

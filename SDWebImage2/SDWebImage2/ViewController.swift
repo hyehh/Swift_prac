@@ -17,10 +17,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let url = "http://"
-        print(url.trimmingCharacters(in: .whitespacesAndNewlines))
+        let url = "http://issue3.gmoneytrans.net//Product/AirPods Max.png"
+        // print(url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
         
-        self.imgView.sd_setImage(with: URL(string: url.trimmingCharacters(in: .whitespacesAndNewlines)))
+//        if let encoded = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let myURL = URL(string: encoded) {
+//
+//               print(myURL)
+//
+//        }
+        
+        self.imgView.sd_setImage(with: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!))
         
         print("여기 등장하니?")
     }
