@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let url = "http://issue3.gmoneytrans.net//Product/AirPods Max.png"
+        
         // print(url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
         
 //        if let encoded = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let myURL = URL(string: encoded) {
