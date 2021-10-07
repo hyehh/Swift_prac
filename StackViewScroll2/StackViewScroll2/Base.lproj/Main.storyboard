@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StackViewScroll2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1K-if-xzV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3R-iI-1UI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="F3R-iI-1UI" firstAttribute="centerX" secondItem="f1K-if-xzV" secondAttribute="centerX" placeholder="YES" id="3Ec-E4-4L8"/>
+                                    <constraint firstItem="F3R-iI-1UI" firstAttribute="leading" secondItem="f1K-if-xzV" secondAttribute="leading" id="7MO-ZZ-Tcb"/>
+                                    <constraint firstItem="F3R-iI-1UI" firstAttribute="height" secondItem="f1K-if-xzV" secondAttribute="height" id="PSg-rD-9L6"/>
+                                    <constraint firstItem="F3R-iI-1UI" firstAttribute="top" secondItem="f1K-if-xzV" secondAttribute="top" id="dJM-aL-8N8"/>
+                                    <constraint firstAttribute="trailing" secondItem="F3R-iI-1UI" secondAttribute="trailing" id="s1c-Is-ZHQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="F3R-iI-1UI" secondAttribute="bottom" id="v41-Pe-h6H"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f1K-if-xzV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2ad-I3-u8Z"/>
+                            <constraint firstItem="f1K-if-xzV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Fxm-B0-ygb"/>
+                            <constraint firstItem="f1K-if-xzV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xb1-p6-3y5"/>
+                            <constraint firstItem="f1K-if-xzV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kDq-2o-GoB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="horizontallyScrollableStackView" destination="F3R-iI-1UI" id="2zy-YN-quT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="69.642857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

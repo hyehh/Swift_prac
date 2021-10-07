@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="grt-kq-cDI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19162"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="tnA-hM-8Oe">
+            <objects>
+                <tableViewController id="grt-kq-cDI" customClass="TableViewController" customModule="TableViewBtnDataChange2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="nEr-Tk-6H4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BtnTableViewCell" rowHeight="89" id="UXw-Wo-Yhp" customClass="BtnTableViewCell" customModule="TableViewBtnDataChange2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="89"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UXw-Wo-Yhp" id="VQq-Jh-NIa">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="epM-nt-Srw">
+                                            <rect key="frame" x="31" y="22" width="374" height="67"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="803-Y0-Tph">
+                                                    <rect key="frame" x="0.0" y="18.5" width="66" height="30"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="A"/>
+                                                    <connections>
+                                                        <action selector="btnA:" destination="UXw-Wo-Yhp" eventType="touchUpInside" id="O1f-IF-lcI"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxT-De-cUw">
+                                                    <rect key="frame" x="106" y="18.5" width="66" height="30"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="B"/>
+                                                    <connections>
+                                                        <action selector="btnB:" destination="UXw-Wo-Yhp" eventType="touchUpInside" id="M1T-xH-eGD"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OE4-Mg-KL9">
+                                                    <rect key="frame" x="212" y="18.5" width="162" height="30"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="C"/>
+                                                    <connections>
+                                                        <action selector="btnC:" destination="UXw-Wo-Yhp" eventType="touchUpInside" id="gUq-qH-Rp0"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="epM-nt-Srw" firstAttribute="leading" secondItem="VQq-Jh-NIa" secondAttribute="leadingMargin" constant="11" id="4cM-Sm-NBO"/>
+                                        <constraint firstItem="epM-nt-Srw" firstAttribute="bottom" secondItem="VQq-Jh-NIa" secondAttribute="bottomMargin" constant="11" id="Wve-kU-kPD"/>
+                                        <constraint firstItem="epM-nt-Srw" firstAttribute="top" secondItem="VQq-Jh-NIa" secondAttribute="topMargin" constant="11" id="ukb-Jj-dSH"/>
+                                        <constraint firstItem="epM-nt-Srw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VQq-Jh-NIa" secondAttribute="trailingMargin" constant="11" id="wWD-Mo-IOq"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnA" destination="803-Y0-Tph" id="nEm-u4-PnZ"/>
+                                    <outlet property="btnB" destination="UxT-De-cUw" id="lMX-pA-zme"/>
+                                    <outlet property="btnC" destination="OE4-Mg-KL9" id="P77-2W-4RH"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentTableViewCell" rowHeight="125" id="Qkh-zi-l7a" customClass="ContentTableViewCell" customModule="TableViewBtnDataChange2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="133.5" width="414" height="125"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qkh-zi-l7a" id="xPy-Kf-GhT">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1n-13-GU9">
+                                            <rect key="frame" x="31" y="22" width="41.5" height="81"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="U1n-13-GU9" firstAttribute="leading" secondItem="xPy-Kf-GhT" secondAttribute="leadingMargin" constant="11" id="PN1-Mj-onk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="U1n-13-GU9" secondAttribute="bottom" constant="11" id="RSC-Iv-MRO"/>
+                                        <constraint firstItem="U1n-13-GU9" firstAttribute="top" secondItem="xPy-Kf-GhT" secondAttribute="topMargin" constant="11" id="Uo9-zs-jV1"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="U1n-13-GU9" secondAttribute="trailing" constant="11" id="kmf-Hh-tfw"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblText" destination="U1n-13-GU9" id="I7D-MR-whl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="grt-kq-cDI" id="cZw-EG-Enw"/>
+                            <outlet property="delegate" destination="grt-kq-cDI" id="TNh-Cq-mR7"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="myTableView" destination="nEr-Tk-6H4" id="mKB-dR-T3l"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yBu-Xy-l4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165.21739130434784" y="174.77678571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
