@@ -14,6 +14,33 @@ var pCoffeeList = [[String:String]]()
 var pNonCoffeeList = [[String:String]]()
 var pExpensiveList = [[String:String]]()
 var pCheapList = [[String:String]]()
+var pPrice = [Int]()
+var sortedArray  = [[String:String]]()
+
+sortedArray.removeAll()
+for i in 0..<products.count {
+    if products[i]["pCoffee"] == "1" {
+        sortedArray.append(products[i])
+    }
+}
+
+sortedArray.removeAll()
+let sordData = products.sorted(by: {
+    $0["pName"]! < $1["pName"]!
+})
+sortedArray = sordData
+
+print(sortedArray)
+
+for i in 0..<products.count {
+    for (key, value) in products[i] {
+        if key == "pPrice" {
+            pPrice.append(Int(value)!)
+        }
+    }
+    pPrice.sort()
+}
+
 
 for i in 0..<products.count {
     for (key, value) in products[i] {
@@ -27,16 +54,67 @@ for i in 0..<products.count {
             if Int(value)! >= 4000 {
                 pExpensiveList.append(products[i])
             }else {
-                pCheapList.append(products[i])
+                // pCheapList.append(products[i])
             }
         }
     }
 }
 
-print(pCoffeeList)
-print(pNonCoffeeList)
-print(pExpensiveList)
+var num = 0
+for i in 0..<products.count {
+    for (key, value) in products[i] {
+        if key == "pPrice" {
+            print(value)
+            if num == 0 {
+                num = Int(value)!
+                pCheapList.append(products[i])
+            }else {
+                // 기존에 있는 숫자가 더 크다면
+                if num >= Int(value)! {
+                    pCheapList.insert(products[i], at: 0)
+                    num = Int(value)!
+                }else { // 새로 들어온 숫자가 더 크다면
+                    // 내가 하고 싶은 건 새로 들어온 숫자가 더 클 경우 두 번째 숫자와 비교하기
+                    // pCheapList.insert(products[i], at: 1)
+                    var num2 = 0
+                    var num3 = 0
+                    
+                    for j in 0..<pCheapList.count {
+                        for (key2, value2) in pCheapList[j] {
+                            if key2 == "pPrice" {
+                                // 그럼 일단 여기는 1번째 숫자보다는 100% 크다
+                                // 그럼 두 번째 숫자나 세 번째 숫자, 네 번째 숫자 중 사이에 들어가야 함
+                                
+                                print("\(value), \(value2)!")
+                                if Int(value)! <= Int(value2)! {
+                                    num2 += 1
+                                    if num2 == 1 {
+                                        pCheapList.insert(products[i], at: j)
+                                        print(products[i])
+                                    }
+                                    break
+                                }
+                                num3 += 1
+                                
+                                if pCheapList.count == num3 {
+                                    print("dkkk")
+                                    pCheapList.insert(products[i], at: pCheapList.count)
+                                }
+                                
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+print(pPrice)
 print(pCheapList)
+
+
 
 //for product in pCoffee {
 //    pCoffeeList += [products[product]]

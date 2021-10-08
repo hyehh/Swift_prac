@@ -30,9 +30,9 @@ class ScrollTableViewCell: UITableViewCell, UIScrollViewDelegate {
          // scrollView.addSubview(view)
         scrollView.addSubview(btnLast)
         // min - l max - t
-        scrollView.contentSize.width = btnLast.frame.maxX + CGFloat(400)
+        scrollView.contentSize.width = btnLast.frame.maxX
 
-        print(btnLast.frame.maxX + CGFloat(250), "ddd")
+        print(btnLast.frame.maxX + CGFloat(100), "ddd")
 
 //        for i in 0..<4 {
 //            scrollView.contentSize.width = btnLast.frame.width * CGFloat(1+i)
