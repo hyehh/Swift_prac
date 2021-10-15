@@ -14,6 +14,7 @@
 		1092F5C42716C7260065E7EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1092F5C32716C7260065E7EB /* Assets.xcassets */; };
 		1092F5C72716C7260065E7EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1092F5C52716C7260065E7EB /* LaunchScreen.storyboard */; };
 		1092F5CF2716C8C40065E7EB /* BtnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092F5CE2716C8C40065E7EB /* BtnViewController.swift */; };
+		1092F606271919AD0065E7EB /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092F605271919AD0065E7EB /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1092F5C62716C7260065E7EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1092F5C82716C7260065E7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1092F5CE2716C8C40065E7EB /* BtnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnViewController.swift; sourceTree = "<group>"; };
+		1092F605271919AD0065E7EB /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				1092F5C52716C7260065E7EB /* LaunchScreen.storyboard */,
 				1092F5C82716C7260065E7EB /* Info.plist */,
 				1092F5CE2716C8C40065E7EB /* BtnViewController.swift */,
+				1092F605271919AD0065E7EB /* ViewController2.swift */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1092F606271919AD0065E7EB /* ViewController2.swift in Sources */,
 				1092F5BF2716C7200065E7EB /* ViewController.swift in Sources */,
 				1092F5CF2716C8C40065E7EB /* BtnViewController.swift in Sources */,
 				1092F5BB2716C7200065E7EB /* AppDelegate.swift in Sources */,

@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnOff(_ sender: UIButton) {
         
-        let alertOff = UIAlertController(title: "렘프 끄기", message: "램프를 끄시겠습니까?", preferredStyle: .alert)
+        let alertOff = UIAlertController(title: "렘프 끄기", message: "램프를 끄시겠습니까?", preferredStyle: .actionSheet)
         let yesAction = UIAlertAction(title: "네", style: .default, handler: {ACTION in
             switch self.isOn {
             case true:
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnRemove(_ sender: UIButton) {
-        let alertRemove = UIAlertController(title: "램프 제거", message: "램프를 제거할까요?", preferredStyle: .alert)
+        let alertRemove = UIAlertController(title: "램프 제거", message: "램프를 제거할까요?", preferredStyle: .actionSheet)
         let onAction = UIAlertAction(title: "아니오, 끕니다!", style: .default, handler: {ACTION in
             switch self.isOn{
             case true:
@@ -78,6 +78,7 @@ class ViewController: UIViewController {
                 self.isOn = true
             }
         })
+        // style -> .cancel 로 바꿔주기
         let removeAction = UIAlertAction(title: "네, 제거합니다!", style: .default, handler: {ACTION in
             self.lampImage.image = self.imgRemove
             self.isOn = false
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
     }
     
     func impossibelOn(){
-        let alertOn = UIAlertController(title: "경고", message: "현재 ON 상태 입니다!", preferredStyle: .alert)
+        let alertOn = UIAlertController(title: "경고", message: "현재 ON 상태 입니다!", preferredStyle: .actionSheet)
         let onAction = UIAlertAction(title: "네, 알겠습니다", style: .default, handler: nil)
         
         alertOn.addAction(onAction)
@@ -100,7 +101,7 @@ class ViewController: UIViewController {
     }
     
     func impoosibleOff(){
-        let alertOffImpossible = UIAlertController(title: "경고", message: "현재 Off 상태 입니다!", preferredStyle: .alert)
+        let alertOffImpossible = UIAlertController(title: "경고", message: "현재 Off 상태 입니다!", preferredStyle: .actionSheet)
         let offImpossibleAction = UIAlertAction(title: "네, 알겠습니다", style: .default, handler: nil)
         
         alertOffImpossible.addAction(offImpossibleAction)

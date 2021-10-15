@@ -23,13 +23,19 @@ class BtnViewController: UIViewController {
         
         // 옵저버 등록
         // 담당자 인적사항 및 업무 추가
-        NotificationCenter.default.addObserver(self, selector: #selector(printSomeThing(_:)), name: .doItSomeThing, object: nil)
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(printSomeThing(_:)), name: .doItSomeThing, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showLabel), name: NSNotification.Name(rawValue: "PostButton"), object: nil)
     }
-    @objc func printSomeThing(_ notification: Notification) {
-            print("do it something")
-        }
+    
+    @objc func showLabel(){
+        // 수행할 업무 적어주기!
+        lblText.layer.isHidden = false
     }
+    
+//    @objc func printSomeThing(_ notification: Notification) {
+//            print("do it something")
+//        }
+//    }
 //    @objc func loadList(_ notification : NSNotification)
 //    {
 //        // 실행되는 부분...
@@ -48,4 +54,4 @@ class BtnViewController: UIViewController {
     }
     */
 
-
+}
