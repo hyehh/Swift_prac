@@ -8,3 +8,6 @@
 import Foundation
 
 print("Hello, World!")
+var info = [String:AnyObject]()
+
+
