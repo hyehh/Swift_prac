@@ -9,7 +9,7 @@ import Foundation
 
 print("Hello, World!")
 
-var products2 = [["status": "Sale", "ProductId": "VP0004", "price": "100000.00", "Thumbnailurl": "http://issue3.gmoneytrans.net//Product/1.PNG", "CODE": "0", "ProductName": "Skullcandy headset", "category": "Electronics", "MESSAGE": "Success"], ["status": "Sale", "category": "Electronics", "MESSAGE": "Success", "Thumbnailurl": "http://issue3.gmoneytrans.net//Product/AirPods Max.png", "price": "590000.00", "ProductName": "AirPods Max", "CODE": "0", "ProductId": "VP0005"], ["ProductId": "VP00010", "status": "Sale", "MESSAGE": "Success", "ProductName": "odd number Test", "category": "silver", "CODE": "0", "Thumbnailurl": "http://issue3.gmoneytrans.net//Product/D5.png", "price": "10000.00"]]
+var products2 = [["status": "Sale", "ProductId": "VP0004", "price": "100000.00", "Thumbnailurl": "http://Product/1.PNG", "CODE": "0", "ProductName": "Skullcandy headset", "category": "Electronics", "MESSAGE": "Success"], ["status": "Sale", "category": "Electronics", "MESSAGE": "Success", "Thumbnailurl": "http://Product/AirPods Max.png", "price": "590000.00", "ProductName": "AirPods Max", "CODE": "0", "ProductId": "VP0005"], ["ProductId": "VP00010", "status": "Sale", "MESSAGE": "Success", "ProductName": "odd number Test", "category": "silver", "CODE": "0", "Thumbnailurl": "http://Product/D5.png", "price": "10000.00"]]
 var pName = [String]()
 var pPrice = [String]()
 var pUrl = [String]()
@@ -59,7 +59,7 @@ print(pPrice)
 print(pUrl)
 
 
-var product = ["MESSAGE": "Success", "ProductDetailImagescount": "4", "Detailimagesurl": "http://issue3.gmoneytrans.net//Product/air.png|http://issue3.gmoneytrans.net//Product/112.png|http://issue3.gmoneytrans.net//Product/Apple Watch.png|http://issue3.gmoneytrans.net//Product/D1.png", "Status": "Sale", "CODE": "0", "ProductDescriptions": "1\n1\n1\n1\n1\n1\n1\n1\nsa\nfs\nda\nsafd\nfsafas"]
+var product = ["MESSAGE": "Success", "ProductDetailImagescount": "4", "Detailimagesurl": "http://Product/air.png|http://Product/112.png|http://Product/Apple Watch.png|http://Product/D1.png", "Status": "Sale", "CODE": "0", "ProductDescriptions": "1\n1\n1\n1\n1\n1\n1\n1\nsa\nfs\nda\nsafd\nfsafas"]
 
 for (key, value) in product {
     if key == "ProductName" {
@@ -71,7 +71,7 @@ for (key, value) in product {
     }
 }
 
-var url = "http://issue3.gmoneytrans.net//Product/air.png|http://issue3.gmoneytrans.net//Product/112.png|http://issue3.gmoneytrans.net//Product/Apple Watch.png|http://issue3.gmoneytrans.net//Product/D1.png"
+var url = "http://Product/air.png|http://Product/112.png|http://Product/Apple Watch.png|http://Product/D1.png"
 
 print(url.components(separatedBy: "|"))
 print(url.split(separator: "|"))

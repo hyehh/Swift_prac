@@ -14,8 +14,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let pc = LKPageControl.init(frame: .zero)
-        pc.currentPageIndicatorTintColor = .green
-        pc.pageIndicatorTintColor = .blue
+        pc.currentPageIndicatorTintColor = .blue
+        pc.pageIndicatorTintColor = .white
         pc.numberOfPages = 2
         pc.currentPage = 0
         pc.translatesAutoresizingMaskIntoConstraints = false
